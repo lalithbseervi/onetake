@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/html"; charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Covid-19 Study </title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+	<body>
+    <script>
+      const details = document.querySelectorAll('details');
+
+      details.forEach(detail => {
+        const detailContent = detail.querySelector('div');
+        const detailClosedHeight = detail.scrollHeight;
+        detail.open = true;
+        detailContent.style.setProperty('--details-content-height-open', detailContent.scrollHeight + 'vh');
+        detail.style.setProperty('--details-height-open', detailContent.scrollHeight + detailClosedHeight + 'vh');
+        detail.open = false;
+
+        detailContent.style.setProperty('--details-content-height-closed', detailContent.scrollHeight + 'vh');
+        detail.style.setProperty('--details-height-closed', detailClosedHeight + 'vh');
+
+        detail.addEventListener('click', (ev) => {
+          const container = ev.target.parentElement;
+          const timeout = getComputedStyle(container.querySelector('div')).getPropertyValue('--details-transition-time');
+          
+          container.classList.toggle('is--open');
+        
+          if (container.open) {
+            ev.preventDefault();
+            setTimeout(function() {
+              container.open = false;
+            }, parseInt(timeout))
+          }
+        })
+      });
+      details.forEach(detail => {
+
+      window.addEventListener('resize', (ev) => {
+
+        if (detail.classList.contains('is--open')) {
+          detailContent.style.setProperty('--details-height-open', detailContent.scrollHeight + 'vh');
+          }
+      });
+    });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+          $("a").on('click', function(event) {
+        
+            if (this.hash !== "") {
+              event.preventDefault();
+
+              var hash = this.hash;
+        
+              $('html, body').animate({
+                scrollTop: $(hash).offset().top
+              }, 800, function(){
+        
+                window.location.hash = hash;
+              });
+            } 
+          });
+        });
+        </script>
+
+    <script>
+    var elem = document.documentElement;
+    function openFullscreen() {
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+    }
+    }
+
+    function closeFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) { /* Safari */
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { /* IE11 */
+        document.msExitFullscreen();
+    }
+    }
+    </script>
+
+	<script>
+		function showText (id) {
+			document.getElementById(id).style.display = "block";
+		}
+	</script>
+	<h2>Study about Covid-19</h2> 
+    <button id = fs onclick="openFullscreen();">Open Fullscreen</button>
+    <button id = fs onclick="closeFullscreen();">Close Fullscreen</button>
+    <div class="workaround"></div>
+    <details>
+      <summary>
+        Introduction about Covid-19
+      </summary>
+      <p> 1. What exactly is a coronavirus? </p>
+      <p> Coronaviruses are a large family of viruses that can infect <strong>animals and humans.</strong> They were first discovered in the mid-1960s. These are 
+        dangerous viruses which <strong>attack our respiratory system and they have spike proteins</strong> which help them invade and take over the cells in our lungs. 
+        Although coronaviruses usually infect animals, they can infect humans too shall we come in contact of an infected animal.</p>
+
+      <p>2. What are the types of coronaviruses and how do they harm?</p>
+      <p>As far as we know, there are <strong>7 types</strong> of coronaviruses. They are KHU1, OC43, NL63, 229E, SARS-CoV, MERS-CoV and SARS-CoV-2. The KHU1, OC43, NL63, and
+      229E cause mild respiratory infections like common cold. But the other 3 namely SARS-CoV, MERS-CoV and SARS-CoV-2 are known for more <strong>severe respiratory
+      diseases</strong> and can cause complications like <strong>pnuemonia and black fungus.</strong> The SARS-CoV-2 first attacks the lungs by taking over cells and killing
+      them, while multiplying in huge numbers. When there are a huge number of them in the lungs, they cause difficulty in breathing...feelings of shortness of 
+      breath and many more effects which can lead to coughing and other symptoms. This virus becomes very deadly when it triggers a massive response from the immune
+      system. When the response is too aggresive, they may attack the body's tissues itself instead of attacking the virus.</p>
+
+      <p>3. What causes the virus to mutate?</p>
+      <p>When a virus multiplies, it copies the <em>genetic information of itself from the RNA(Ribonucleic acid) it may make some mistakes. These mistakes are known as mutation. Although almost all of those mutations don't make the virus stronger, some may make it <strong>resistent to heat, cold or develop more and severe symptoms. The virus in which dangerous mutations are detected are called variants.</p></strong></em>
+
+      <p>4. When can we expect the pandemic to end?</p>
+      <p>This depends on what <strong>national governments</strong> decide to do. They have 3 options. <strong><em>The first one is called Race Through It, another is Delay & Vaccinate, and the final one is Co-ordinate and Crush.</strong></em>
+      In the first option, governments do nothing to contain the spread of the virus, causing it to spread quickly and also causes the health system to collapse and without <strong><em>the necessary time required to study the virus</strong></em> doctors cannot treat patients effectively enough. Eventually the people who survived the virus, develop immunity against it. This leads to what we call an herd immunity. When we reach herd immunity, the virus cannot find any hosts and the pandemic is declared as over. But this option comes at the costs of millions to hundreds of millions of lives. Although there's another way to reach herd immunity without the cost of so many lives and that is Delay and vaccinate.</p>
+
+      <p>In the second option, <em><strong>Delay and Vaccinate</em></strong>, governments across the world try to halt the spread of the virus by imposing restrictions or lockdwons. Unfortunately, the virus still spreads slowly. Meanwhile, scientists and doctors get some time to develop and manufacture a safe vaccine. Then the vaccine is ready and freely available, hopefully thanks to a global effort. After vaccinating 50-70% of the world's population we can reach <strong>herd immunity.</strong></p>
+
+      <p>In the final option, <strong><em>Co-ordinate and Crush,</em></strong> all the nations impose strict restrictions together and don't let the virus spread anywhere at all. We can sort of call it 'starving the virus'. But when restrictions are taken away, the chances of another wave are very high.</p>
+
+      <p>Most of the people across the globe consider the 2nd option the best because the 1st option costs a lot of lives and the 3rd option will require an high amount of global effort which is nearly impossible.</p>
+
+      <p>5. Can the coronavirus be an endemic?</p>
+      <p>Coronavirus might be endemic because of the way it is transmitted to humans, that is via animals. We cannot stop the spread of the virus in animals and so it might keep coming back in the form of waves.</p>
+    </details>
+    <details>
+      <summary>
+        Variants Of Covid-19
+      </summary>
+      <p>6. What types of Variants exist currently in India?</p>
+    	<p>There are five variants detected in US. They are B.1.1.7, B.1.351, P.1, B.1.427 and B.1.429</p>
+    	<p>According to CDC, the B.1.1.7 variant was first discovered in December 2020. It was initially detected in United Kingdom.</p>
+      <p>The B.1.351 variant was first in South Africa in December 2020. In the US it was detected at the end of January 2021.</p>
+      <p>The P.1 variant was first detected in travelers from Brazil, who were tested during routine screening at an airport in Japan, in early January.</p>
+      <p>The variants B.1.427 and B.1.429 were identified first in California in February 2021.</p>
+      <p>The B.1.617 variant has become dominant in India and has spread to 40 more nations including Fiji, Singapore and UK. </p>
+      <p>The B.1.1.7, first identified in United Kingdom had become dominant in Punjab and Delhi.</p>
+      <p>Meanwhile another variant named B.1.617 had overtaken B.1.618 in West Bengal and is rapidly spreading to other states including Delhi</p>
+      <p>The WHO(World Health Organization) has designated B.1.617 a variant of concern as it is very likely to spread faster than the others, cause severe disease or evade the body quicker after infecting.</p>
+      <p>Some variants are impacting globally. These include B.1.351 and B.1.1.7. The AstraZeneca is less effective against B.1.351. </p>
+      <p>In a detailed genomic and structural analysis of B.1.617 by National Institute Of Virology, scientists said that the virus had 8 mutations in the spike protien which helps it to gain entry to cells.</p>
+      <p>Some studies suggest the B.1.617 might cause more inflammation in the lungs.</p>
+      <p>Other studies have shown that the B.1.617 might has a little advantage over the Covaxin vaccine as it's effectiness drops by a little.</p>
+    </details>	
+    <details>
+      <summary>
+        Common Myths
+      </summary>
+      <p> 1. Covid-19 vaccines are dangerous because of their extremely rare side-effects.</p>
+        <h4> While it is true that Covid-19 vaccines have side-effects, they aren't life-threating and those side-effects that are possibly
+        life-threating have a lower chance of occuring, while getting infected by Covid-19 has a higher chance. So, its better to not
+        reject vaccination and help not only themselves but everyone around themselves.</h4>
+      <p> 2. Covid-19 can be treated by 'Cow urine' </p>
+        <h4> It's true that Hindu beliefs have it that Gods exist in Cow, but that doesn't mean that Cow's urine can cure Covid-19. While this may sound obvious to people living in the cities that cow urine doesn't cure Covid-19, we still get to hear such statements via Whatsapp forwards and this is a big issue in rural areas. </h4>
+      <p> 3. Mineral and Vitamin supplements help in the cure of Covid-19 </p>
+      <h4> While minerals and vitamins are required for our well-being and play a critical role in our immune system, there is no guidance on the use of supplements as a treatement for Covid-19 </h4> 
+      <p> 4. Prolonged use of masks can lead to CO2 intoxication or oxygen deficiency </p>
+      <h4> The prolonged use of masks in situations like in a classroom, or an office can be uncomfortable. However, it doesn't cause CO2 intoxication or oxygen deficiency when worn properly. </h4> 
+    </details>  
+    <div class="hr"></div>
+    <div id="quickFix"> 
+    The expenditure of Narendra Modi amounting to Rupees 20 thousand crores on the Central Vista Project which was unnecessary at the time of an global pandemic</br>
+    Those funds could have been better used to improve medical infrastructure or to expand the vaccine production capacity, but unfortunately the Government and our elected politicians don't care about that.</br>
+    It's high time we speak up against the Godi Media, letting them know that we are not gonna fall for their lies.They cannot cover up all the mistakes of the Government.</br>
+    They cannot just ignore problems like unemployement, poor preparation to fight back Covid-19 by Government, arresting journalists for reasons that are completely illogical and many more.</br>
+    They cannot be ignoring statements like "Cow's urine can help battle Covid ~Pragya Singh Thakur(A member of Indian Parliament)" or "Ripped jeans destroy our culture ~Tirat Singh Rawat(CM of Uttarakhand)."</br>
+    I'd like to end with saying that please do not believe in WhatsApp/Facebook forwards unless it's from a reputable and correct source like World Health Organization.</br>
+	  This section does not intend to spread hate against anyone in the BJP party. I'm just criticising the Government within my fundamental rights abiding to the laws.
+</div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+              content.style.maxHeight = null;
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+            }
+          });
+        }
+        </script>
+    <details>
+      <summary>
+        Covid-19 related recent news.
+      </summary>
+     <p> Omicron (B.1.1.529) variant was first reported to WHO by South Africa on 24th Of November. The country has had steep increases in number of cases which lines 
+       up with the detection of Omicron variant. </p>
+    <p> The most concerning this about this variant seems to be the number of mutations it has. Preliminary evidence shows that this virus may be more re-infectious.</p>
+    <p> As individuals we must take measures to reduce their risk of COVID-19, including proven public health and social measures such as wearing well-fitting masks, 
+      hand hygiene, physical distancing, improving ventilation of indoor spaces, avoiding crowded spaces, and getting vaccinated.</p>
+    <p>Source(s): <a href="https://www.who.int/news/item/26-11-2021-classification-of-omicron-(b.1.1.529)-sars-cov-2-variant-of-concern" target="blank">
+      World Health Organization
+    </a></p>  
+    </details>
+    <details>
+      <summary>
+        Side Note: Nipah Virus Outbreak
+      </summary>
+        <p>Nipah Virus, discovered in 1999 followed by an outbreak in pigs and people in Malaysia and Singapore.</p>
+        <p>This outbreak resulted in nearly 300 human cases and more than 100 deaths, and more than 1 million pigs were killed to control the outbreak.</p>
+        <p>These outbreaks are not something new, infact, India and Bangladesh have recorded outbreaks almost annually. It has the potential to cause yet another 
+          pandemic.
+        </p>
+        <p>This is an zoonotic virus, meaning it initially spreads between animal and humans. The animal host of this virus is a fruit bad(genus Pteropus)</p>
+        <p> Further info can be found below</p>
+        <div class="iframe-container">
+        <iframe loading="lazy" src="https://en.wikipedia.org/wiki/Nipah_virus_infection"></iframe>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        More details about Covid-19 can be found here below:
+      </summary>
+      <div class="iframe-container">
+        <iframe loading="lazy" src="https://en.wikipedia.org/wiki/Coronavirus"></iframe>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        Comments on this webpage can be submitted in the form below:
+      </summary>
+      <div class="iframe-container">
+        <iframe loading="lazy" src="https://onetake/dist/contact-form/"></iframe>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        All the links to all my websites can be found here:
+      </summary>
+      <div class="iframe-container">
+        <iframe loading="lazy" src="https://onetake/"></iframe>
+      </div>
+    </details>
+
+    <p> Note: I would like to be the first one to admit that this website is very opinionated. However, if enough people demand, I will allow everyone to change this
+      website.
+    </p>
+
+</body>
+</html>

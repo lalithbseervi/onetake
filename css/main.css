@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100&display=swap');
+
+:root{
+        --font: 'Lexend';
+        --sFont: 'Lexend';
+        --pColor: #03Dac6;
+        --scolor: #018786;
+        --optional: #b00020;
+        --fontSz: 1.2vw;
+    }
+    
+    body{
+        width: 97%;
+        height: 97%;
+        background-color: #535353;
+    }
+    
+    p{
+        font-family: var(--font);
+        font-size: var(--fontSz);
+        font-weight: 100;
+        color: var(--pColor);
+    }
+    
+    .edit{
+        background-color: #ffffff;
+        margin-right: 85.2vw;
+    }
+    
+    a{
+        background-color: #1a1a1a;
+        padding: 1vw, 1vw;
+        font-family: var(--sFont);
+        font-size: 1vw;
+        text-decoration: none;
+    }
+    
+    a:hover{
+        text-decoration: underline;
+    }
+    
+    a:visited{
+        color: #b00020;
+    }
+    
+    .wrapper {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9, for an aspect ratio of 1:1 change to this value to 100% */ 
+        }
+    
+    iframe{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
