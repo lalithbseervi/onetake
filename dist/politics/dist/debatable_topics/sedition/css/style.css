@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@200&display=swap');
+
+:root{
+    --bgColor: #2B2F32;
+    --font: 'Lexend Deca';
+    --colorP: #2acc68;
+    --fontSz: calc(0.6em + 0.5vmin);
+    --fontSzDiff: calc(0.6em + 0.15vmin);
+    --color2: #F5F5F5;
+    --aBgCol: #964545;
+    --SpFont: 'Lexend Deca';
+    --spFontSz: 0.8vw;
+    --spFontC: #60FFBA; 
+}
+
+html {
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: var(--bgColor);
+    overflow: scroll;
+    width: 97%;
+}
+
+p{
+    font-family: var(--font);
+    font-size: var(--fontSz);
+    color: var(--colorP)
+}
+
+span{
+    font-family: var(--SpFont);
+    font-size: var(--fontSz);
+    color: var(--spFontC);
+}
+
+summary{
+    font-family: monospace;
+    margin-bottom: 1vh;
+    font-size: var(--fontSz);
+    color: #60EFFF;
+}
+
+.text2{
+    font-family: var(--font);
+    font-size: var(--fontSzDiff);
+    color: var(--color2);
+}
+
+a:link, a:visited {
+    font-family: var(--font);
+    font-size: var(--fontSz);
+    background-color: white;
+    color: black;
+    border: 2px solid #000000;
+    padding: calc(0.4em + 0.3vmin);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1vh;
+}
