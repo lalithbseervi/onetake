@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script>
+        window.onload = function() {
+            function responsive(svg){
+            console.log('hope');
+            const container = d3.select(svg.node().parentNode),
+            width = parseInt(svg.style('width'), 10),
+            height = parseInt(svg.style(height), 10),
+            aspect = width/height;
+
+            svg.attr('viewBox', '0 0 ${width} ${height')
+               .attr('preserveAspectRatio', 'xMinYMid')
+               .call(resize);
+            
+               d3.select(window).on(
+                'resize.' + container.attr('id'), 
+                resize
+            );
+            function resize() {
+                const w = parseInt(container.style('width'));
+                svg.attr('width', w);
+                svg.attr('height', Math.round(w / aspect));
+            }   
+        }
+    }
+    </script> -->
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/themes/dark_blue.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-cartesian-3d.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+    <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+    <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.10.0/css/anychart-ui.min.css"/>
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <script src="js/sw.js"></script>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="/dist/css/main.css" />
+    <title>Graphing</title>
+</head>
+<body>
+    <script src="js/main.js"></script>
+    <div id="collatz"></div>
+    <div id="container"></div>
+    <div id="acchedin"></div>
+    <div id="buredin"></div>
+    <div id="barchart"></div>
+    <div id="elementslow-high"></div>
+    <div id="elementshigh-low"></div>
+    <div id="piechart1"></div>
+    <script>
+        anychart.onDocumentReady(function() {
+        anychart.theme('darkBlue');
+
+        var dataSet = anychart.data.set(getData());
+
+        var ctz0 = dataSet.mapAs({ x: 0, value: 1});
+        var ctz1 = dataSet.mapAs({ x: 0, value: 2});
+        var ctz2 = dataSet.mapAs({ x: 0, value: 3});
+        var ctz3 = dataSet.mapAs({ x: 0, value: 4});
+
+        var chart = anychart.line();
+
+        /* var chart = anychart.line3d(); */
+        chart.crosshair().enabled(true).yLabel(false).yStroke(null);
+        chart.tooltip().positionMode('point');
+
+        chart.title('Random Numbers (Uses Gaussian Integers as opposed to random sequences from collatz conjecture)');
+
+        chart.yAxis().title('Random Number');
+        chart.xAxis().labels().padding(5);
+
+        var ctz0 = chart.spline(ctz0);
+        ctz0.name('Sequence 0');
+        ctz0.hovered().markers().enabled(true).type('circle').size(4);
+        ctz0
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);   
+        
+        var ctz1 = chart.spline(ctz1);
+        ctz1.name('Sequence 1');
+        ctz1.hovered().markers().enabled(true).type('circle').size(4);
+        ctz1
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+
+        var ctz2 = chart.spline(ctz2);
+        ctz2.name('Sequence 2');
+        ctz2.hovered().markers().enabled(true).type('circle').size(4);
+        ctz2
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+
+        var ctz3 = chart.spline(ctz3);
+        ctz3.name('Sequence 3');
+        ctz3.hovered().markers().enabled(true).type('circle').size(4);
+        ctz3
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+        
+        chart.legend().enabled(true).fontSize(13).padding([0, 0, 10, 0]);    
+        
+        chart.animation(true);
+        
+        chart.container("collatz");
+        chart.draw();
+        
+        function getData(){
+            return [
+                ["0", 1288185.7531554630, -79402025.32692865, 194665191.06102172, 9565511967.017727],
+                ["1", 1449446.6086997709, -38221984.19265712, -55186091.12040708, 126252462589.43858],
+                ["2", 66336.80893826191, -49890676.08153731, 32874309.924395334, 100230105432.44327],
+                ["3", -764542.6509716318, -26653495.182044048, 12198806.973265715, -26174608207.03684],
+                ["4", -1092172.2151041415, 60087072.35260677, 69530759.12498696, -26412609282.098568],
+                ["5", 31335.51683171687, -142971539.45623103, -116733161.75917535, 191872253224.94046],
+                ["6", -1022102.1700108729, -28044812.634102277, -34532415.336349465, 15911244335.005638],
+                ["7", -1436828.4451025298, -40426643.548195064, -62563042.65072924, -4335349533.016676],
+                ["8", 199312.97648375385, -73576039.23989196, -89468917.54845208, 73679347229.99652],
+                ["9", 133375.60465860483, -9609275.25327444, -70253235.8258749, 113812250300.76936],
+                ["10", 546469.3003382316, 4396.287891896516, -42664513.00847736, -3115170678.52795],
+                ["11", -913969.9437353127, 205751207.84340325, -23877041.327139307, 59387368363.2168],
+                ["12", 5006.2836265724445, 25131163.417222783, -75487927.28836113, -98346160004.03546],
+                ["13", -64740.76037268789, -543646.474289233, 35134890.18703432, -37045837368.033455],
+                ["14", -1505828.0012607418, 72242627.86570401, -45583091.23189757, -44250628374.68097],
+                ["15", 537998.1786610339, -87146430.09754017, -266234648.33351564, -134560599523.70598],
+                ["16", 320712.10099884827, -50036255.181926556, 99131045.35560483, -152359926743.2683],
+                ["17", 2389113.043240686, 46046107.94627151, -32626299.34089496, -164318185625.65985],
+                ["18", 202970.17730996423, -41777811.67435009, -61888021.718566716, -24103938299.824154],
+                ["19", -144701.3081649205, -81948917.05792761, 22345264.501653634, -17414970133.06324],
+                ["20", 1232758.1750289237, -48080793.081134565, 19143267.779422574, -32354108345.300453],
+                ["21", 198792.2481934255, -112779250.84316851, 4395991.351456749, 6981892216.220778],
+                ["22", 909032.026153209, 95441409.58607168, -71138618.94504677, -134894135558.64017],
+                ["23", -365543.2662325168, 105523865.96629778, 15951306.719025139, -8025968060.830755],
+                ["24", 218172.81336058246, 218503079.1582166, -128000047.59696014, 24047949081.104248],
+                ["25", 1024289.678487018, -24243412.35667522, 120177657.54647143, 75855283196.24568],
+                ["26", 696248.0224529615, -18964399.201749463, -105363449.0835323, -85468487071.92133],
+                ["27", 128473.24863285638, -16368262.380238477, -17199082.152999267, -40386951404.53149],
+                ["28", -1082307.0245960446, 44640122.69031388, 1593314.117086484, -203532943147.8232],
+                ["29", 445222.77236104856, 1137739.2491847575, 18226839.149949588, -50868605852.08218],
+                ["30", 76864.48171925232, 65916603.53404013, -20529612.437293813, -221865793085.3354],
+                ["31", 720468.5968592537, -25619099.953560196, 40202634.914869994, -143357988010.10535],
+                ["32", 216233.93780007304, -118650387.48483856, -302607864.70110035, 111252660827.91658],
+                ["33", 1088186.411135523, 132645585.53434056, -19465709.63895461, 80654738190.98854],
+                ["34", -51559.265423925426, -41339885.12936613, -24100345.847475626, 33117561944.63641],
+                ["35", 201965.06007942127, 96588640.47816668, -46919856.31683044, -31546248952.36456],
+                ["36", 666777.4386256495, -28090017.564872097, 116612884.38057046, 46393687314.82572],
+                ["37", -1086883.6121744795, 11940346.725324875, -92142218.48775592, 53273590798.1601],
+                ["38", -401659.2600740189, -138386001.60425347, -17739203.52611431, 105587552642.03714],
+                ["39", -500027.56895236846, -81309550.22395256, -180420264.20254987, -23267386423.939198],
+                ["40", 1980616.7195232462, 32914248.077657353, 11891114.593216773, -59814203834.05844],
+                ["41", -92861.02565608457, 49372961.648061946, -146550618.172321, -61066148010.11327],
+                ["42", 652221.223807572, -19500252.244989604, -142227206.19560868, -99630601717.71045],
+                ["43", 619376.0621737189, 11887626.872564461, 186272771.5947439, -4537222646.539629],
+                ["44", -280872.43018689257, -153645260.02227688, 47954582.80048872, -79361613061.89651],
+                ["45", -1550835.8271304471, 3279520.0767073864, -11703831.55565988, 107928044374.4483],
+                ["46", 964844.9706761433, -56233882.16186931, 3319220.260412977, -188811785907.0057],
+                ["47", -407195.76966359187, -86067931.55638903, -131901370.81262076, -110468214780.81767],
+                ["48", 717957.6567448998, 29088878.351553224, -99364031.1774473, -96270607702.46207],
+                ["49", -1305263.8251099645, -37439811.74558328, 24578437.34550785, -211379215526.55527],
+                ["50", -437982.0019698298, -73519567.63845927, -189041273.53698343, 192130140455.91434],
+                ["51", 1256822.3446053613, -33048308.487655465, 11876973.62758278, -243242257955.2641],
+                ["52", 1431004.9880525183, -32774137.78964067, -157126318.28649232, -28612173905.646698],
+                ["53", -1302457.6211383573, -24224692.71090329, -830250.5147075339, -53046436719.86003],
+                ["54", -1332806.4790889432, 5990299.887758326, -104750062.1987767, 167247910677.67426],
+                ["55", -44263.437601831945, -37047715.18101518, 136944635.67453727, -200527061273.07205],
+                ["56", 728242.3233187197, 75809917.82778826, 74783737.65571357, 108255168286.37897],
+                ["57", 160505.67937932975, 130731294.19408025, -54548638.511106744, -73872822869.9191],
+                ["58", 303555.70782698377, 83972795.33093357, -170582209.46512312, -15677692650.486572],
+                ["59", -988835.424974613, -28635915.93785424, -77285523.78217466, -67767918296.69573],
+                ["60", 586792.7138138036, -53602070.94158032, -15770932.9086659, 64687997035.3495],
+                ["61", 1116853.3411368355, 32119613.420222364, -94836204.22220005, -114901829327.66592],
+                ["62", -435671.520283983, -17837666.646722246, 12997643.334731724, -7968748319.439572],
+                ["63", -1433487.063663466, 113997935.70283793, 72615218.65936463, 35694942059.580154],
+                ["64", -758819.823683749, 18249586.830592565, -15633373.647378733, 185866074671.8449],
+                ["65", 761659.0058369826, 37828027.451402016, -47677765.92962184, -242933130260.96176],
+                ["66", -1733696.191836434, -48066760.17418686, 55082321.24367696, 154037483508.60583],
+                ["67", -91875.78780560388, 13724464.865987964, -35964318.42982204, 95755027532.53801],
+                ["68", -991007.2851454935, -91779390.14305648, 60835383.04075708, -48842403013.705315],
+                ["69", -131133.44197771876, -124218289.35964964, -37872390.72803954, 30797888360.555893],
+                ["70", -244520.5867480386, 16379751.500777707, 125660459.35979834, -47066358499.39497],
+                ["71", 15857.783272316015, -93811433.73859844, -34494068.89423806, 166319579966.41425],
+                ["72", 1501208.3963034006, -51164821.43963167, -100512926.07064393, 21168630968.176273],
+                ["73", 420711.4436078803, 72731179.78217652, -2683843.871595643, -21771123561.712593],
+                ["74", 1333713.745365226, 131404120.69124523, -64364538.98465413, -23034255006.823215],
+                ["75", -141411.71430345395, 4136724.469694205, -90266396.34914403, -20187495182.025066],
+                ["76", -479585.60782696574, -35851126.39454138, -21531065.73141342, -17838455547.131386],
+                ["77", 378811.58226598904, 63634605.47726821, 52592719.78452344, -88777294182.01825],
+                ["78", -2835789.786680037, 79561443.72268605, -193657229.45886576, 207892257841.28864],
+                ["79", -39887.81469206719, 43690528.84737694, -14496476.912791887, -193010283672.45877],
+                ["80", 160170.789075227, -71884328.55123283, -23559250.387994315, -364181004564.49725],
+                ["81", -1235207.7440135414, -41211211.16882355, -23051138.413563404, -12407787214.915276],
+                ["82", 464366.222572551, 84995913.90137853, 57341122.972929254, -14803044935.015083],
+                ["83", -559243.8043269602, -91030748.02043472, -121065065.10577258, 37615872866.53619],
+                ["84", -2459099.190276957, 5484268.717294945, 45388160.31453854, -20655071425.4232],
+                ["85", -213317.39036794662, 101490912.22368447, -29751609.42134714, -14959807005.563597],
+                ["86", -978844.7442967794, 85362431.84024446, -949524.4463333954, 33566902197.656822], 
+                ["87", -520594.8726001464, -53771713.310319774, -28958170.826114472, 97809933600.08302],
+                ["88", -152283.41870536935, -24018255.39237915, -38095572.09684204, -37654697610.90823],
+                ["89", 1250976.3492338231, -17940319.321201883, -54502420.05213186, 195992929086.29657],
+                ["90", 103149.17894159017, -92417968.98614074, 24879330.92978342, 53532663663.15941],
+                ["91", -28484.624983674465, 6172521.468863476, 168115439.09018582, -99530405560.22905],
+                ["92", 389005.41616738716, -70712576.6681225, 79475376.78584632, 234718238649.34357],
+                ["93", -1812091.3658246147, 50612791.965126194, 62666298.44786071, 78366639054.50589],
+                ["94" ,1240124.870623568, -89160606.38579576, 37913117.48884537, -59488968766.89896],
+                ["95", -1077085.9202964841, -52680294.2363409, -49553137.91331419, -118615828363.98297],
+                ["96", 439096.071135007, -50029165.57198409, 42184870.00844146, 30130163274.838165],
+                ["97", -1126779.495468637, 3180573.1685713977, 166375855.93947053, 36096632.120350674],
+                ["98", -976484.3646109402, -204407569.11963978, -117064422.40513694, -24745084.698774327],
+                ["99", -396286.8752715003, 78936540.426596, 61589802.73083772, 93884885.28213082]
+            ];
+        }
+    })
+    </script>
+    <script>
+        anychart.onDocumentReady(function () {
+            
+            anychart.theme('darkBlue');
+            
+            var dataSet = anychart.data.set(getData());
+            
+        var firstSeriesData = dataSet.mapAs({ x: 0, value: 1 });
+        var secondSeriesData = dataSet.mapAs({ x: 0, value: 2 });
+
+        var chart = anychart.line();
+        /* var chart = anychart.line3d(); */
+        chart.crosshair().enabled(true).yLabel(false).yStroke(null);
+        chart.tooltip().positionMode('point');
+
+        chart.title('M(s) vs T(no. of D(s))');
+
+        chart.yAxis().title('No. of M(s)');
+        chart.xAxis().labels().padding(5);
+
+        var firstSeries = chart.line(firstSeriesData);
+        firstSeries.name('Daily M(s)');
+        firstSeries.hovered().markers().enabled(true).type('circle').size(4);
+        firstSeries
+            .tooltip()
+            .position('right')
+            .anchor('left-center')
+            .offsetX(5)
+            .offsetY(5);
+        
+        var secondSeries = chart.line(secondSeriesData);
+        secondSeries.name('Total No. of M(s)');
+        secondSeries.hovered().markers().enabled(true).type('circle').size(4);
+        secondSeries
+            .tooltip()
+            .position('right')
+            .anchor('left-center')
+            .offsetX(5)
+            .offsetY(5);  
+         
+        chart.legend().enabled(true).fontSize(13).padding([0, 0, 10, 0]);    
+
+        chart.animation(true);
+
+        chart.container("container");
+        chart.draw();
+
+        function getData() {
+            return [
+            ["Day Xero", 0, 0], ["1st Oct", 12, 12], ["2nd Oct", 2, 14], ["3rd Oct", 5, 19], ["4th Oct", 1, 20], ["5th Oct", 3, 23], ["6th Oct", 10, 33],
+            ["7th Oct", 4, 37], ["8th Oct", 2, 39], ["9th Oct", 3, 42], ["10th Oct", 3, 45], ["11th Oct", 1, 46], ["12th Oct", 4, 50], ["13th Oct", 1, 51],
+            ["14th Oct", 1, 52], ["15th Oct", 1, 53], ["16th Oct", 1, 54], ["17th Oct", 4, 58], ["18th Oct", 8, 66], ["19th Oct", 0, 66], ["20th Oct", 0, 66], 
+            ["21st Oct", 0, 66], ["22nd Oct", 1, 67], ["23rd Oct", 1, 68], ["24th Oct", 2, 70], ["25th Oct", 5, 75], ["26th Oct", 1, 76], ["27th Oct", 1, 77],
+            ["28th Oct", 0, 77], ["29th Oct", 1, 78], ["31st Oct", 1, 79], ["1st November", 0, 79], ["2nd November", 0, 79], ["3rd November", 2, 81], 
+            ["4th November", 4, 85], ["5th November", 0, 85], ["6th November", 0, 85], ["7th November", 1, 86], ["8th November", 3, 89], ["9th November", 0, 89],
+            ["10th November", 0, 89], ["11th November", 3, 92], ["12th November", 2, 94], ["13th November", 1, 95], ["14th November", 3, 98], ["15th November", 4, 102],
+            ["16th November", 8, 110], ["17th November", 1, 111], ["18th November", 1, 112], ["19th November", 1, 113], ["20th November", 0, 113], ["21st November", 1, 114],
+            ["22nd November", 3, 117], ["23rd November", 2, 119], ["24th November", 0, 119], ["25th November", 1, 120], ["26th November", 0, 120], ["27th November", 3, 123],
+            ["28th November", 2, 125], ["29th November", 0, 125], ["30th November", 1, 126], ["1st December", 0, 126], ["2nd December", 0, 126], ["3rd December", 0, 126],
+            ["4th December", 1, 127], ["5th December", 4, 131], ["6th December", 0, 131], ["7th December", 0, 131], ["8th December", 0, 131], ["9th December", 0, 131],
+            ["10th December", 0, 131], ["11th December", 0, 131],
+            ];
+        }
+    });
+    </script>
+<script>
+    anychart.onDocumentReady(function() {
+        anychart.theme('darkBlue')
+        var data = anychart.data.set([       
+            ["Day Xero", 0, 0], ["1st Oct", 12, 12], ["2nd Oct", 2, 14], ["3rd Oct", 5, 19], ["4th Oct", 1, 20], ["5th Oct", 3, 23], ["6th Oct", 10, 33],
+            ["7th Oct", 4, 37], ["8th Oct", 2, 39], ["9th Oct", 3, 42], ["10th Oct", 3, 45], ["11th Oct", 1, 46], ["12th Oct", 4, 50], ["13th Oct", 1, 51],
+            ["14th Oct", 1, 52], ["15th Oct", 1, 53], ["16th Oct", 1, 54], ["17th Oct", 4, 58], ["18th Oct", 8, 66], ["19th Oct", 0, 66], ["20th Oct", 0, 66], 
+            ["21st Oct", 0, 66], ["22nd Oct", 1, 67], ["23rd Oct", 1, 68], ["24th Oct", 2, 70], ["25th Oct", 5, 75], ["26th Oct", 1, 76], ["27th Oct", 1, 77],
+            ["28th Oct", 0, 77], ["29th Oct", 1, 78], ["31st Oct", 1, 79], ["1st November", 0, 79], ["2nd November", 0, 79], ["3rd November", 2, 81], 
+            ["4th November", 4, 85], ["5th November", 0, 85], ["6th November", 0, 85], ["7th November", 1, 86], ["8th November", 3, 89], ["9th November", 0, 89],
+            ["10th November", 0, 89], ["11th November", 3, 92], ["12th November", 2, 94], ["13th November", 1, 95], ["14th November", 3, 98], ["15th November", 4, 102],
+            ["16th November", 8, 110], ["17th November", 1, 111], ["18th November", 1, 112], ["19th November", 1, 113], ["20th November", 0, 113], ["21st November", 1, 114],
+            ["22nd November", 3, 117], ["23rd November", 2, 119], ["24th November", 0, 119], ["25th November", 1, 120], ["26th November", 0, 120], ["27th November", 3, 123],
+            ["28th November", 2, 125], ["29th November", 0, 125], ["30th November", 1, 126], ["1st December", 0, 126], ["2nd December", 0, 126], ["3rd December", 0, 126],
+            ["4th December", 1, 127], ["5th December", 4, 131], ["6th December", 0, 131], ["7th December", 0, 131], ["8th December", 0, 131], ["9th December", 0, 131],
+            ["10th December", 0, 131], ["11th December", 0, 131],
+        ]);
+
+        var seriesData_1 = data.mapAs({x: 0, value: 1});
+        var seriesData_2 = data.mapAs({x: 0, value: 2});
+
+        var chart = anychart.bar();
+        /* var chart = anychart.bar3d(); */
+
+        var series = chart.bar(seriesData_1);
+        series.name("No. of Daily M's");
+
+        series.normal().fill("#00cc99", 0.3);
+        series.hovered().fill("#00cc99", 0.1);
+        series.selected().fill("#00cc99", 0.5);
+        series.normal().stroke("#00cc99", 1, "10 5", "round");
+        series.hovered().stroke("#00cc99", 2, "10 5", "round");
+        series.selected().stroke("#00cc99", 4, "10 5", "round");
+
+        var series1 = chart.bar(seriesData_2);
+        series.name("Total No. of M's");
+
+        series1.normal().fill("#0066cc", 0.3);
+        series1.hovered().fill("#0066cc", 0.1);
+        series1.selected().fill("#0066cc", 0.5);
+        series1.normal().hatchFill("forward-diagonal", "#0066cc", 1, 15);
+        series1.hovered().hatchFill("forward-diagonal", "#0066cc", 1, 15);
+        series1.selected().hatchFill("forward-diagonal", "#0066cc", 1, 15);
+        series1.normal().stroke("#0066cc");
+        series1.hovered().stroke("#0066cc", 2);
+        series1.selected().stroke("#0066cc", 4);
+
+        chart.xAxis().title("Days");
+        chart.yAxis().title("M's");
+        chart.animation(true);
+        chart.container('barchart');
+        chart.draw();
+    })
+</script>
+<script>
+    anychart.onDocumentReady(function() {
+        anychart.theme('darkBlue');
+        var chart = anychart.column();
+        chart.animation(true);
+        chart.title("Masses of all 118 elements(sorted from lowest to highest)");
+        
+        var sortedData = anychart.data.set([
+            ["Hydrogen", 1.008], ["Helium", 4.0026], ["Lithium", 6.94], ["Beryllium", 9.0122], ["Boron", 10.81], ["Carbon", 12.011],
+            ["Nitrogen", 14.007], ["Oxygen", 15.999], ["Flourine", 18.998], ["Neon", 20.180], ["Sodium", 22.990], ["Magnesium", 24.305], ["Aluminium", 26.982],
+            ["Silicon", 28.085], ["Phosphorus", 30.974], ["Sulfur", 32.06], ["Chlorine", 35.45], ["Potassium", 39.098], ["Argon", 39.95], ["Calcium", 40.078],
+            ["Scandium", 44.956], ["Titanium", 47.867], ["Vandanium", 50.942], ["Chromium", 51.996], ["Manganese", 54.938], ["Iron", 55.845], ["Nickel", 58.693],
+            ["Cobalt", 58.933], ["Copper", 63.546], ["Zinc", 65.38], ["Gallium", 69.723], ["Germanium", 72.630], ["Arsenic", 74.922], ["Selenium", 78.971],
+            ["Bromine", 79.904], ["Krypton", 83.798], ["Rubidium", 85.468], ["Strontium", 87.62], ["Yttrium", 88.906], ["Zirconium", 91.224], ["Niobium", 92.906],
+            ["Molybdenum", 95.95], ["Technetium", 97], ["Ruthenium", 101.07], ["Rhodium", 102.91], ["Palladium", 106.42], ["Silver", 107.87], ["Cadmium", 112.41],
+            ["Indium", 114.82], ["Tin", 118.71], ["Antimony", 121.76], ["Iodine", 126.90], ["Tellurium", 127.60], ["Xenon", 131.29], ["Caesium", 132.91],
+            ["Barium", 137.33], ["Lanthanum", 138.91], ["Cerium", 140.12], ["Praseodymium", 140.91], ["Neodymium", 144.24], ["Promethium", 145], ["Samarium", 150.36],
+            ["Europium", 151.96], ["Gadolinium", 157.25], ["Terbium", 158.93], ["Dysprosium", 162.50], ["Holmium", 164.93], ["Erbium", 167.26], ["Thulium", 168.93],
+            ["Ytterbium", 173.05], ["Lutetium", 174.97], ["Hafnium", 178.49], ["Tantalum", 180.95], ["Tungsten", 183.84], ["Rhenium", 186.21], ["Osmium", 190.23],
+            ["Iridium", 192.22], ["Platinum", 195.08], ["Gold", 196.97], ["Mercury", 200.59], ["Thallium", 204.38], ["Lead", 207.2], ["Bismuth", 208.98],
+            ["Polonium", 209], ["Astatine", 210], ["Radon", 222], ["Francium", 223], ["Radium", 226], ["Actinium", 227], ["Protactinium", 231.04],
+            ["Thorium", 232.04], ["Neptunium", 237], ["Uranium", 238.03], ["Americium", 243], ["Plutonium", 244], ["Curium", 247], ["Berkelium", 247],
+            ["Californium", 251], ["Einsteinium", 252], ["Fermium", 257], ["Mendelevium", 258], ["Nobelium", 259], ["Lawrencium", 266], ["Rutherfordium", 267],
+            ["Dubnium", 268], ["Seaborgium", 269], ["Hassium", 269], ["Bohrium", 270], ["Meitnerium", 278], ["Darmstadtium", 281], ["Roentgenium", 282],
+            ["Copernicium", 285], ["Nihonium", 286], ["Flervonium", 289], ["Moscovium", 290], ["Livermorium", 293], ["Tennessine", 294], ["Oganesson", 294]
+        ])
+        var seriesData = sortedData.mapAs({x: 0, value: 1});
+
+        var scale = anychart.scales.linear();
+        scale.minimum(0).maximum(351).ticks({ interval: 20 });
+
+        chart.crosshair(true);
+
+        var lineSeries = chart.line(seriesData);
+        lineSeries.yScale(scale).markers(true);
+
+        chart.column(seriesData)        
+        chart.yScale().minimum(0);
+        chart.tooltip().positionMode('point');
+        chart.interactivity().hoverMode('by-x');
+        chart.container('elementslow-high');
+        chart.draw();
+    })
+</script>
+<script>
+    anychart.onDocumentReady(function() {
+        anychart.theme('darkBlue');
+        var chart = anychart.column();
+        chart.animation(true);
+        chart.title("Masses of all 118 elements(sorted from highest to lowest)");
+        
+        var sortedData = anychart.data.set([
+            ["Oganesson", 294], ["Tennessine", 294], ["Livermorium", 293], ["Moscovium", 290], ["Flervonium", 289], ["Nihonium", 286],
+            ["Copernicium", 285], ["Roentgenium", 282], ["Darmstadtium", 281], ["Meitnerium", 278], ["Bohrium", 270], ["Hassium", 269], ["Seaborgium", 269],
+            ["Dubnium", 268], ["Rutherfordium", 267], ["Lawrencium", 266], ["Nobelium", 259], ["Mendelevium", 258], ["Fermium", 257], ["Einsteinium", 252],
+            ["Californium", 251], ["Berkelium", 247], ["Curium", 247], ["Plutonium", 244], ["Americium", 243], ["Uranium", 238.03], ["Neptunium", 237], 
+            ["Thorium", 232.04], ["Protactinium", 231.04], ["Actinium", 227], ["Radium", 226], ["Francium", 223], ["Radon", 222], ["Astatine", 210],
+            ["Polonium", 209], ["Bismuth", 208.98], ["Lead", 207.2], ["Thallium", 204.38], ["Mercury", 200.59], ["Gold", 196.97], ["Platinum", 195.08],
+            ["Iridium", 192.22], ["Osmium", 190.23], ["Rhenium", 186.21], ["Tungsten", 183.84], ["Tantalum", 180.95], ["Hafnium", 178.49], ["Lutetium", 174.97],
+            ["Ytterbium", 173.05], ["Thulium", 168.93], ["Erbium", 167.26], ["Holmium", 164.93], ["Dysprosium", 162.50], ["Terbium", 158.93], ["Gadolinium", 157.25],
+            ["Europium", 151.96], ["Samarium", 150.36], ["Promethium", 145], ["Neodymium", 144.24], ["Praseodymium", 140.91], ["Cerium", 140.12],
+            ["Lanthanum", 138.91], ["Barium", 137.33], ["Caesium", 132.91], ["Xenon", 131.29], ["Tellurium", 127.60], ["Iodine", 126.90], ["Antimony", 121.76],
+            ["Tin", 118.71], ["Indium", 114.82], ["Cadmium", 112.41], ["Silver", 107.87], ["Palladium", 106.42], ["Rhodium", 102.91], ["Ruthenium", 101.07],
+            ["Technetium", 97], ["Molybdenum", 95.95], ["Niobium", 92.906], ["Zirconium", 91.224], ["Yttrium", 88.906], ["Strontium", 87.62], ["Rubidium", 85.468],
+            ["Krypton", 83.798], ["Bromine", 79.904], ["Selenium", 78.971], ["Arsenic", 74.922], ["Germanium", 72.630], ["Gallium", 69.723], ["Zinc", 65.38],
+            ["Copper", 63.546], ["Cobalt", 58.933], ["Nickel", 58.693], ["Iron", 55.845], ["Manganese", 54.938], ["Chromium", 51.996], ["Vandanium", 50.942], 
+            ["Titanium", 47.867], ["Scandium", 44.956], ["Calcium", 40.078], ["Argon", 39.95], ["Potassium", 39.098], ["Chlorine", 35.45], ["Sulfur", 32.06],
+            ["Phosphorus", 30.974], ["Silicon", 28.085], ["Aluminium", 26.982], ["Magnesium", 24.305], ["Sodium", 22.990], ["Neon", 20.180], ["Flourine", 18.998],
+            ["Oxygen", 15.999], ["Nitrogen", 14.007], ["Carbon", 12.011], ["Boron", 10.81], ["Beryllium", 9.0122], ["Lithium", 6.94], ["Helium", 4.0026], 
+            ["Hydrogen", 1.008],
+        ])
+        var seriesData = sortedData.mapAs({x: 0, value: 1});
+
+        var scale = anychart.scales.linear();
+        scale.minimum(0).maximum(351).ticks({ interval: 20 });
+
+        chart.crosshair(true);
+
+        var lineSeries = chart.line(seriesData);
+        lineSeries.yScale(scale).markers(true);
+
+        chart.column(seriesData)        
+        chart.yScale().minimum(0);
+        chart.tooltip().positionMode('point');
+        chart.interactivity().hoverMode('by-x');
+        chart.container('elementshigh-low');
+        chart.draw();
+    })    
+</script>
+<script>
+    anychart.onDocumentReady(function(){
+        anychart.theme('darkBlue')
+
+        var chart = anychart.pie([
+            ['Nehru Ki Galti', 40], ['Anti-nationals', 20], ['Tukde Tukde Gang', 20], ['Khan Market Gang', 10], ['Urban Naxal', 5], ['International Conspiracy', 3],
+            ['BJP ki Galti', 1]
+        ])
+
+        /* chart.radius('64%') */
+        chart.group(function (value) {
+            return value >= 1;
+        })
+        chart.title('Aayega toh Modi hi')
+
+        chart.labels().position('outside')
+
+        chart
+            .legend()
+            .title()
+            .enabled(true)
+            .text('Kiski Galti hai?')
+            .padding([0, 0, 10, 0]);
+
+        chart
+            .legend()
+            .position('center-bottom')
+            .itemsLayout('horizontal')
+            .align('center');
+
+        chart.container('piechart1')
+        chart.draw();
+    });
+</script>
+<script>
+    anychart.onDocumentReady(function(){
+        anychart.theme('darkBlue')
+
+        var chart = anychart.pie([
+            ['Hindus', 100]
+        ])
+
+        /* chart.radius('64%') */
+        chart.group(function (value) {
+            return value >= 1;
+        })
+        chart.title('Population Of Secular India should be: (from the perspective of BJP)')
+
+        chart.labels().position('outside')
+
+        chart
+            .legend()
+            .title()
+            .enabled(true)
+            .text('Kiski Galti hai?')
+            .padding([0, 0, 10, 0]);
+
+        chart
+            .legend()
+            .position('center-bottom')
+            .itemsLayout('horizontal')
+            .align('center');
+
+        chart.container('piechart1')
+        chart.draw();
+    });
+</script>
+<script>
+    anychart.onDocumentReady(function () {
+        
+        anychart.theme('darkBlue');
+
+    var dataSet = anychart.data.set(getData());
+
+    var firstSeriesData = dataSet.mapAs({ x: 0, value: 1 });
+    var secondSeriesData = dataSet.mapAs({ x: 0, value: 2 });
+
+    var chart = anychart.line();
+    /* var chart = anychart.line3d(); */
+    chart.crosshair().enabled(true).yLabel(false).yStroke(null);
+    chart.tooltip().positionMode('point');
+
+    chart.title('Acche Din');
+
+    chart.yAxis().title('Petrol Price');
+    chart.xAxis().labels().padding(5);
+
+    var firstSeries = chart.line(firstSeriesData);
+    firstSeries.name('Petrol Price');
+    firstSeries.hovered().markers().enabled(true).type('circle').size(4);
+    firstSeries
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+     
+    chart.legend().enabled(true).fontSize(13).padding([0, 0, 10, 0]);    
+
+    chart.animation(true);
+
+    chart.container("container");
+    chart.draw();
+
+    function getData() {
+        return [
+            ['2014', 61], ['2015', 59], ['2016', 68], ['2017', 69], ['2018', 79], ['2020', 100], ['2025', 150], ['2030', 200], ['2040', 400], ['2050', 1000]
+        ];
+    }
+});
+</script>
+<script>
+    anychart.onDocumentReady(function () {
+        
+        anychart.theme('darkBlue');
+
+    var dataSet = anychart.data.set(getData());
+
+    var firstSeriesData = dataSet.mapAs({ x: 0, value: 1 });
+    var secondSeriesData = dataSet.mapAs({ x: 0, value: 2 });
+
+    var chart = anychart.line();
+    /* var chart = anychart.line3d(); */
+    chart.crosshair().enabled(true).yLabel(false).yStroke(null);
+    chart.tooltip().positionMode('point');
+
+    chart.title('Bure Din');
+
+    chart.yAxis().title('Petrol Price');
+    chart.xAxis().labels().padding(5);
+
+    var firstSeries = chart.line(firstSeriesData);
+    firstSeries.name('Petrol Price');
+    firstSeries.hovered().markers().enabled(true).type('circle').size(4);
+    firstSeries
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+     
+    chart.legend().enabled(true).fontSize(13).padding([0, 0, 10, 0]);    
+
+    chart.animation(true);
+
+    chart.container("buredin");
+    chart.draw();
+
+    function getData() {
+        return [
+            ['2014', 61], ['2015', 59], ['2016', 50], ['2017', 46], ['2018', 40], ['2020', 38.45], ['2025', 20.12], ['2030', 18], ['2040', 12], ['2050', 10]
+        ];
+    }
+});
+</script>
+</body>
+</html>

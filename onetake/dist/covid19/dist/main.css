@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600&display=swap');
+
+:root{
+    --primaryfont: 'Lexend Deca';
+    --pFontSz: calc(0.8em + 0.5vmin);
+    --lightfont: 200;
+    --strongerfont: 300;
+    --boldfont: 400;
+    --extrabold: 500;
+    --optionalweight: 600;
+    --backgroundColor: #282a36;
+    /*--blue: #1b91ff;
+    --green: #50fa7b; */
+    --white: #fff;
+    --black: #000;
+    --gray: #666666;
+    --very-light-gray: #bbb;
+    --purple: #705dcb;
+    --teal: #4ca2bd;
+    --faded-yellow: #fdf9d3;
+    --faded-green: #e4ffee;
+    --faded-purple: #eff2ff;
+    --faded-red: #f8e8e5;
+    --faded-blue: #eff7fa;
+    --faded-darker-purple: #eaedf9;
+    --bg-light: #1e242e;
+    --bg-dark: #151a21;
+    --bgcolor: #191f23;
+    --green: #40cf6c;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    width: 98%;
+    scroll-behavior: smooth;
+    animation-name: rainbow;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+
+p{
+    font-family: var(--primaryfont);
+    font-size: calc(0.60em + 1vmin);
+    font-weight: var(--lightfont);
+    color: var(--black);
+}
+
+h2{
+    font-family: var(--primaryfont);
+}
+
+h3{
+    font-family: var(--primaryfont);
+    color: var(--green);
+}
+
+h4{
+    font-family: var(--primaryfont);
+}
+
+ul {
+    font-weight: 200;
+    font-family: var(--primaryfont);
+    font-size: var(--pFontSz);
+    list-style-type: decimal;
+    color: var(--bg-dark);
+}
+
+a:link, a:visited {
+    font-family: var(--primaryfont);
+    font-size: var(--secondaryfontsz);
+    background-color: var(--white);
+    color: var(--black);
+    border: 0.2em solid var(--white);
+    padding: calc(0.45em + 0.35vmin);
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    margin-bottom: calc(0.4em + 0.5vmin);
+    margin-left: 1.5em;
+}
+
+#quickFix{
+    font-family: var(--primaryfont);
+    font-size: calc(0.75em + 1vmin);
+    font-weight: var(--strongerfont);
+}
+
+button{
+    background-color: var(--black);
+    padding: calc(0.3785em + 0.2vmin);
+    min-width: fit-content;
+    width: calc(1em * 0.8vmin);
+    margin-top: calc(0.2em - 3.78500vmin);
+    margin-left: 1.5em;
+    border-radius: 0.2vw;
+    border-color: var(--backgroundColor);
+    color: var(--green);
+    font-size: calc(0.57em + 0.81vmin);
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+summary{
+    font-family: var(--primaryfont);
+    margin-bottom: 1vh;
+    font-size: large;
+    color: var(--bg-light);
+    cursor: pointer;
+}
+
+summary > * {
+    display: inline;
+}
+
+details {
+    transition: all ease-out var(--details-transition-time, 0);
+    max-height: var(--details-height-closed, auto);
+}
+  
+details[open] {
+    max-height: var(--details-height-open, auto);
+  
+}
+  
+details body {
+    transition: all ease-out var(--details-transition-time, 0);
+    max-height: var(--details-content-height-closed, auto);
+    overflow: hidden;
+    animation-name: slideDown;
+    animation-duration: var(--details-transition-time);
+}
+  
+details.is--open div {
+    max-height: var(--details-content-height-open, auto);
+}
+  
+
+#fs{
+    background-color: #6272a4;
+}
+
+.submit{
+    font-size: 1vw;
+}
+
+.workaround{
+    margin-bottom: 1em;
+}
+
+body::-webkit-scrollbar-track
+{
+	border: 1px solid black;
+	background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar
+{
+	width: 1.8vh;
+	background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+}
+
+.iframe-container{
+    overflow: visible;
+    padding-top: 56.25%;
+    position: relative;
+}
+
+.iframe-container iframe{
+    border: 0;
+    height: 98%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+@keyframes slideDown {
+    0% {
+      opacity: 0;
+      height: 0;
+    }
+    100% {
+      opacity: 1;
+      height: var(--details-height-open, '100%');
+    }
+}
+
+@keyframes rainbow {
+    0% {
+        background: var(--faded-yellow);
+    }
+    25% {
+        background: var(--faded-green);
+    }
+    50% {
+        background: var(--faded-purple);
+    }
+    75% {
+        background: var(--faded-red);
+    }
+    100% {
+        background: var(--faded-yellow);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    details body {
+      --details-transition-time: 4s;
+    }
+  }

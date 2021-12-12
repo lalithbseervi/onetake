@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@200&display=swap');
+
+:root{
+    --primaryfont: "Lexend Deca";
+    --black: #000000;
+    --white: #ffffff;
+    --green: #40cf6c;
+    --cyan: #55fad9;
+    --idk: #7FA3C7;
+    --bgcolor: #191f23;
+    --fontweight: 200;
+    --secondaryfontsz: calc(0.85em + 0.1vmin);
+}
+
+html, body{
+    background-color: var(--bgcolor);
+}
+
+h2{
+    font-family: var(--primaryfont);
+    color: var(--green);
+}
+
+h3{
+    font-family: var(--primaryfont);
+    color: var(--white);
+}
+
+p{
+    font-family: var(--primaryfont);
+    font-weight: var(--fontweight);
+    color: var(--idk);
+}
+
+a:link, a:visited {
+    font-family: var(--primaryfont);
+    font-size: var(--secondaryfontsz);
+    background-color: var(--white);
+    color: var(--black);
+    border: 0.2em solid var(--white);
+    padding: calc(0.45em + 0.35vmin);
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    margin-bottom: calc(0.4em + 0.5vmin);
+    margin-left: 1.5em;
+}
