@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend+Deca:wght@100;200;300;500;600;700;800&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="/dist/test_graph/css/main.css">
+</head>
+<body>
+    <p class="typea"> Network Graph </p>
+    <div class="iframe-container">
+        <iframe loading="lazy" src="/dist/test_graph/network-graph.html"></iframe>
+    </div>
+    <script type="text/javascript">
+        function iframeLoaded() {
+            var iFrameID = document.getElementsByClassName('iframe-container');
+            if(iFrameID) {
+                  iFrameID.height = "";
+                  iFrameID.height = iFrameID.contentWindow.document.body.scrollHeight + "px";
+            }   
+        }
+    </script>
+    <script>
+       function getRandomColor(){
+            var color =  "#" + (Math.random() * 0xFFFFFF << 0).toString(16);
+            console.log(color);
+        }
+        function color() {
+            for (let i = 0; i < 5; i++) {
+            getRandomColor();
+        }
+    } 
+    </script>
+    <!-- <script>
+        anychart.onDocumentReady( function () {
+            anychart.theme('darkBlue');
+
+            var dataSet = anychart.data.set(getData());
+
+            var array1 = dataSet.mapAs({x: 0, value: 1});
+            var array2 = dataSet.mapAs({x: 0, value: 2});
+
+            var chart = anychart.line();
+
+            chart.animation(true);
+
+            chart.padding([10, 20, 5, 20]);
+            chart.crosshair().enabled(true).yLabel(false).yStroke(null);
+
+            chart.tooltip().positionMode('point');
+
+            chart.title('V');
+
+            chart.xAxis().labels().padding(5);
+
+            var array0 = chart.line(array1);
+
+            var array1 = chart.line(array2);
+
+            chart.legend().enabled(true).fontSize(13).padding([0, 0, 10, 0]);
+
+            chart.container('container');
+            chart.draw();   
+        });
+
+        function getData() {
+            return [ 
+                ['E1', 25, 25],
+                ['E2', 25, 24],
+                ['S', 25, 25],
+                ['S.S', 24, 25],
+                ['M', 24, 22],
+                ['K', 24, 24],
+                ['H', 25, 24],
+            ];
+        };
+
+    </script> -->
+</body>
+</html>

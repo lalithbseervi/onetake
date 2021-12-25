@@ -1,0 +1,362 @@
+{
+    "nodes": [
+        {
+            "id": "Graph Drawing",
+            "fill": "#DD1D2F",
+            "stroke": "2 #DD1D2F .5" 
+        },
+        {
+            "id": "Mathematics",
+            "fill": "#FF9F2E",
+            "stroke": "2 #FF9F2E .5" 
+        },
+        {
+            "id": "Arithmetic",
+            "fill": "#A9B2BD",
+            "stroke": "2 #A9B2BD .5" 
+        },
+        {
+            "id": "Number",
+            "fill": "#47009C",
+            "stroke": "2 #47009C .5" 
+        },
+        {
+            "id": "Mathematical Object",
+            "fill": "#FFED31",
+            "stroke": "2 #FFED31 .5" 
+        },
+        {
+            "id": "Concept",
+            "fill": "#008272",
+            "stroke": "2 #008272 .5" 
+        },
+        {
+            "id": "Ideas",
+            "fill": "#FF6600",
+            "stroke": "2 #FF6600 .5" 
+        },
+        {
+            "id": "Philosophy",
+            "fill": "#172642",
+            "stroke": "2 #172642 .5" 
+        },
+        {
+            "id": "Metaphysics",
+            "fill": "#042962",
+            "stroke": "2 #042962 .5" 
+        },
+        {
+            "id": "Philosophy",
+            "fill": "#172642",
+            "stroke": "2 #172642 .5" 
+        },
+        {
+            "id": "Philosophy",
+            "fill": "#172642",
+            "stroke": "2 #172642 .5" 
+        },
+        {
+            "id": "Society",
+            "fill": "#042962",
+            "stroke": "2 #042962 .5" 
+        },
+        {
+            "id": "Social Group",
+            "fill": "#141B3B",
+            "stroke": "2 #141B3B .5" 
+        },
+        {
+            "id": "Social Science",
+            "fill": "#3B96D1",
+            "stroke": "2 #3B96D1 .5" 
+        },
+        {
+            "id": "Branches of Science",
+            "fill": "#366CA7",
+            "stroke": "2 #366CA7 .5" 
+        },
+        {
+            "id": "Science",
+            "fill": "#27A858",
+            "stroke": "2 #27A858 .5" 
+        },
+        {
+            "id": "Latin",
+            "fill": "#F77B00",
+            "stroke": "2 #F77B00 .5" 
+        },
+        {
+            "id": "Classical Language",
+            "fill": "#F3AC00",
+            "stroke": "2 #F3AC00 .5" 
+        },
+        {
+            "id": "Language",
+            "fill": "#0068B0",
+            "stroke": "2 #0068B0 .5" 
+        },
+        {
+            "id": "Communication",
+            "fill": "#800080",
+            "stroke": "2 #800080 .5" 
+        },
+        {
+            "id": "Latin",
+            "fill": "#F77B00",
+            "stroke": "2 #F77B00 .5" 
+        },
+        {
+            "id": "Electricity",
+            "fill": "#E43238",
+            "stroke": "2 #E43238 .5" 
+        },
+        {
+            "id": "Physics",
+            "fill": "#5774B7",
+            "stroke": "2 #5774B7 .5" 
+        },
+        {
+            "id": "Natural Science",
+            "fill": "#4267B2",
+            "stroke": "2 #4267B2 .5" 
+        },
+        {
+            "id": "Religion",
+            "fill": "#204B77",
+            "stroke": "2 #204B77 .5" 
+        },
+        {
+            "id": "Social System",
+            "fill": "#0DAA42",
+            "stroke": "2 #0DAA42 .5"
+        },
+        {
+            "id": "Sociology",
+            "fill": "#D54D40",
+            "stroke": "2 #D54D40 .5"
+        },
+        {
+            "id": "Social Science",
+            "fill": "#3B96D1",
+            "stroke": "2 #3B96D1 .5" 
+        },
+        {
+            "id": "Music",
+            "fill": "#4284F4",
+            "stroke": "2 #4284F4 .5"
+        },
+        {
+            "id": "The arts",
+            "fill": "#123C63",
+            "stroke": "2 #123C63 .5"
+        },
+        {
+            "id": "Creativity",
+            "fill": "#0CBE98",
+            "stroke": "2 #0CBE98 .5"
+        },
+        {
+            "id": "Ideas",
+            "fill": "#FF6600",
+            "stroke": "2 #FF6600 .5" 
+        },
+        {
+            "id": "Computer",
+            "fill": "#6ABE44",
+            "stroke": "2 #6ABE44 .5"
+        },
+        {
+            "id": "Machine",
+            "fill": "#2263F3",
+            "stroke": "2 #2263F3 .5"
+        },
+        {
+            "id": "Artificiality",
+            "fill": "#EC1138",
+            "stroke": "2 #EC1138 .5"
+        },
+        {
+            "id": "Nature",
+            "fill": "#252F3D",
+            "stroke": "2 #252F3D .5"
+        },
+        {
+            "id": "Universe",
+            "fill": "#F0821D",
+            "stroke": "2 #F0821D .5"
+        },
+        {
+            "id": "Latin",
+            "fill": "#F77B00",
+            "stroke": "2 #F77B00 .5" 
+        },
+        {
+            "id": "Education",
+            "fill": "#1827EF",
+            "stroke": "2 #1827EF .5"
+        },
+        {
+            "id": "Learning",
+            "fill": "#0059A6",
+            "stroke": "2 #0059A6 .5"
+        },
+        {
+            "id": "Understand",
+            "fill": "#000000",
+            "stroke": "2 #000000 .5"
+        },
+        {
+            "id": "Psychology",
+            "fill": "#133065",
+            "stroke": "2 #133065 .5"
+        },
+        {
+            "id": "Science",
+            "fill": "#27A858",
+            "stroke": "2 #27A858 .5" 
+        },
+        {
+            "id": "Polymath",
+            "fill": "#4977DB",
+            "stroke": "2 #4977DB .5"
+        },
+        {
+            "id": "Greek",
+            "fill": "#002C8A",
+            "stroke": "2 #002C8A .5"
+        },
+        {
+            "id": "Modern Greek",
+            "fill": "#BD061D",
+            "stroke": "2 #BD061D .5"
+        },
+        {
+            "id": "Dialects",
+            "fill": "#119AD7",
+            "stroke": "2 #119AD7 .5"
+        },
+        {
+            "id": "Variety (Linguistics)",
+            "fill": "#6B6B6B",
+            "stroke": "2 #6B6B6B .5"
+        },
+        {
+            "id": "Sociolinguistics",
+            "fill": "#FF5D01",
+            "stroke": "2 #FF5D01 .5"
+        },
+        {
+            "id": "Society",
+            "fill": "#58CEF4",
+            "stroke": "2 #58CEF4 .5"
+        }
+    ],
+    "edges": [
+        {"from": "Graph Drawing", "to": "Mathematics"},
+        {"from": "Mathematics", "to": "Arithmetic"},
+        {"from": "Arithmetic", "to": "Number"},
+        {"from": "Number", "to": "Mathematical Object"},
+        {"from": "Mathematical Object", "to": "Concept"},
+        {"from": "Concept", "to": "Ideas"},
+        {"from": "Metaphysics", "to": "Philosophy"},
+        {"from": "Society", "to": "Social Group"},
+        {"from": "Social Group", "to": "Social Science"},
+        {"from": "Social Science", "to": "Branches of Science"},
+        {"from": "Electricity", "to": "Physics"},
+        {"from": "Physics", "to": "Natural Science"},
+        {"from": "Natural Science", "to": "Branches of Science"},
+        {"from": "Branches of Science", "to": "Science"},
+        {"from": "Science", "to": "Latin"},
+        {"from": "Latin", "to": "Classical Language"},
+        {"from": "Classical Language", "to": "Language"},
+        {"from": "Language", "to": "Communication"},
+        {"from": "Communication", "to": "Latin"},
+        {"from": "Religion", "to": "Social System"},
+        {"from": "Social System", "to": "Sociology"},
+        {"from": "Sociology", "to": "Social Science"},
+        {"from": "Music", "to": "The arts"},
+        {"from": "The arts", "to": "Creativity"},
+        {"from": "Creativity", "to": "Ideas"},
+        {"from": "Computer", "to": "Machine"},
+        {"from": "Machine", "to": "Artificiality"},
+        {"from": "Artificiality", "to": "Nature"},
+        {"from": "Nature", "to": "Universe"},
+        {"from": "Universe", "to": "Latin"},
+        {"from": "Education", "to": "Learning"},
+        {"from": "Learning", "to": "Understand"},
+        {"from": "Understand", "to": "Psychology"},
+        {"from": "Psychology", "to": "Science"},
+        {"from": "Science", "to": "Latin"},
+        {"from": "Polymath", "to": "Greek"},
+        {"from": "Greek", "to": "Modern Greek"},
+        {"from": "Modern Greek", "to": "Dialects"},
+        {"from": "Dialects", "to": "Variety (Linguistics)"},
+        {"from": "Variety (Linguistics)", "to": "Sociolinguistics"},
+        {"from": "Sociolinguistics", "to": "Society"},
+        "//", "Finding possible missed connections",
+        {"from": "Greek", "to": "Latin"},
+        {"from": "Mathematics", "to": "Science"},
+        {"from": "Mathematics", "to": "Physics"},
+        {"from": "Mathematics", "to": "Number"},
+        {"from": "Mathematics", "to": "Philosophy"},
+        {"from": "Arithmetic", "to": "Computer"},
+        {"from": "Concept", "to": "Philosophy"},
+        {"from": "Concept", "to": "Psychology"},
+        {"from": "Concept", "to": "Computer"},
+        {"from": "Concept", "to": "Learning"},
+        {"from": "Ideas", "to": "Philosophy"},
+        {"from": "Ideas", "to": "Understand"},
+        {"from": "Philosophy", "to": "Psychology"},
+        {"from": "Philosophy", "to": "Sociology"},
+        {"from": "Philosophy", "to": "Science"},
+        {"from": "Philosophy", "to": "Latin"},
+        {"from": "Society", "to": "Language"},
+        {"from": "Society", "to": "Education"},
+        {"from": "Society", "to": "Religion"},
+        {"from": "Social Science", "to": "Psychology"},
+        {"from": "Social Science", "to": "Communication"},
+        {"from": "Social Science", "to": "Education"},
+        {"from": "Social Science", "to": "Latin"},
+        {"from": "Social Science", "to": "Computer"},
+        {"from": "Social Science", "to": "Philosophy"},
+        {"from": "Social Science", "to": "Sociolinguistics"},
+        {"from": "Branches of Science", "to": "Mathematics"},
+        {"from": "Branches of Science", "to": "Philosophy"},
+        {"from": "Branches of Science", "to": "Psychology"},
+        {"from": "Branches of Science", "to": "Natural Science"},
+        {"from": "Branches of Science", "to": "Physics"},
+        {"from": "Branches of Science", "to": "Nature"},
+        {"from": "Science", "to": "Natural Science"},
+        {"from": "Science", "to": "Universe"},
+        {"from": "Science", "to": "Latin"},
+        {"from": "Science", "to": "Social Science"},
+        {"from": "Science", "to": "Branches of Science"},
+        {"from": "Science", "to": "Physics"},
+        {"from": "Science", "to": "Psychology"},
+        {"from": "Science", "to": "Sociology"},
+        {"from": "Religion", "to": "Music"},
+        {"from": "Religion", "to": "Latin"},
+        {"from": "Sociology", "to": "Latin"},
+        {"from": "Sociology", "to": "Greek"},
+        {"from": "Music", "to": "Greek"},
+        {"from": "Music", "to": "Language"},
+        {"from": "Music", "to": "Psychology"},
+        {"from": "The arts", "to": "Mathematics"},
+        {"from": "Creativity", "to": "Psychology"},
+        {"from": "Creativity", "to": "Sociology"},
+        {"from": "Creativity", "to": "Philosophy"},
+        {"from": "Creativity", "to": "The arts"},
+        {"from": "Creativity", "to": "Latin"},
+        {"from": "Creativity", "to": "Education"},
+        {"from": "Machine", "to": "Electricity"},
+        {"from": "Machine", "to": "Latin"},
+        {"from": "Machine", "to": "Greek"},
+        {"from": "Nature", "to": "Science"},
+        {"from": "Nature", "to": "Latin"},
+        {"from": "Education", "to": "Latin"},
+        {"from": "Dialects", "to": "Language"},
+        {"from": "Dialects", "to": "Greek"},
+        {"from": "Polymath", "to": "Latin"},
+        {"from": "Graph Drawing", "to": "Computer"}
+    ]
+}

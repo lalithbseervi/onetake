@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WiP</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend+Deca:wght@100;200;300;500;600;700;800&display=swap" rel="stylesheet">  
+        <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/v8/js/anychart-graph.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/v8/js/anychart-data-adapter.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/v8/themes/dark_blue.min.js"></script>
+        <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+        <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+        <link href="/dist/test_graph/main.json" />
+
+        <style>
+            html, body, #container {
+                width: 100%;
+                height: 100%;
+                margin: 0%;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id="container">
+            <script>
+            
+                var chart;
+                anychart.onDocumentReady(function () {
+                    anychart.theme('darkBlue');
+                    anychart.data.loadJsonFile('/dist/test_graph/main.json',
+                        function (data) {
+                            chart = anychart.graph(data);
+                            chart.layout({ iterationCount: 0 });
+                            chart.nodes().labels().fontSize(16).enabled(true).anchor('auto').autoRotate(true);
+                            chart.nodes().hovered().height(20).width(28);
+                            chart.container('container');
+                            chart.draw()
+        
+                            chart.zoom(
+                                0.69, chart.getPixelBounds().width / 2, chart.getPixelBounds().height / 2
+                            );
+                        }
+                    );
+                });
+            </script>
+        </div>
+    </body>
+</html>

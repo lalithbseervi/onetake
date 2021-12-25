@@ -1,0 +1,45 @@
+:root{
+    --fontone: 'Kalam';
+    --fonttwo: 'Lato';
+    --fontthree: 'Lexend Deca';
+    --fontsz: calc(1em + 0.4vmin);
+    --black: #201e1e;
+    --white: #fff;
+    --rand: #252F3D;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--rand);
+}
+
+.typez{
+    font-family: var(--fontone);
+    font-size: var(--fontsz);
+    color: var(--white);
+}
+
+.typea{
+    font-family: var(--fonttwo);
+    font-size: var(--fontsz);
+    color: var(--white);
+    margin-left: 45.5%;
+}
+
+.iframe-container{
+    overflow: visible;
+    padding-top: 56.25%;
+    position: relative;
+}
+
+.iframe-container iframe{
+    width: 100%;
+    height: 100%;
+    border: 0;
+    left: 0;
+    top: 0; 
+    position: absolute;
+}
