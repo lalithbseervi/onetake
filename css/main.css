@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Lexend+Deca:wght@100;200;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Lexend+Deca:wght@100;200;300;400&&family=Oooh+Baby&display=swap"&display=swap');
 
 :root{
         --font: 'Lexend';
         --sFont: 'Lexend';
         --ssFont: 'Lato';
-        --fontSz: 1.2vw;
-        --secondstagefontSz: 1vw;
+        --testfont: 'Oooh Baby';
+        --secondstagefontSz: calc(.69em + 0.4vmin);
         --firststage: 100;
         --firststagepadding: 1vw;
         --altfirststagepadding: 1em;
@@ -104,10 +104,25 @@
 
     summary{
       font-family: var(--font);
-      font-size: var(--fontSz);
+      font-size: calc(0.9em + 0.2vmin);
     }
 
     .wrapper {
       position: relative;
       padding-bottom: 56.25%; /* 16:9, for an aspect ratio of 1:1 change to this value to 100% */ 
+    }
+
+    #clock {
+      margin-top: 1em;
+      font-family: var(--testfont);
+      font-size: calc(1em + 0.8vmin);
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    #date, #diff, #stopwatch {
+      font-family: var(--testfont);
+      font-size: calc(1em + 0.4vmin);
+      font-weight: 600;
+      color: var(--black);
     }

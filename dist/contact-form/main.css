@@ -72,6 +72,20 @@ button:visited{
     color: #F5F5F5;
 }
 
-.submit{
-    font-size: 1vw;
+@media screen and (max-width: 576px) {
+    button {
+        font-size: 3.56vw;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    button {
+        font-size: 2vw;
+    }
+}
+
+@media (min-width: 1024px) {
+    button {
+        font-size: 1.6vw;
+    }
 }

@@ -9,8 +9,6 @@
     --extrabold: 500;
     --optionalweight: 600;
     --backgroundColor: #282a36;
-    /*--blue: #1b91ff;
-    --green: #50fa7b; */
     --white: #fff;
     --black: #000;
     --gray: #666666;
@@ -184,6 +182,30 @@ body::-webkit-scrollbar-thumb
     position: absolute;
     top: 0;
     width: 100%;
+}
+
+#clock {
+    font-family: 'Lexend Deca';
+    font-size: calc(1em + 0.4vmin);
+    color: var(--black);
+}
+
+#date {
+    font-family: 'Lexend Deca';
+    font-size: calc(1em + 0.4vmin);
+    color: var(--black);
+}
+
+#diff {
+    font-family: 'Lexend Deca';
+    font-size: calc(1em + 0.4vmin);
+    color: var(--black);
+}
+
+#stopwatch {
+    font-family: 'Lexend Deca';
+    font-size: calc(1em + 0.4vmin);
+    color: var(--black);
 }
 
 @keyframes slideDown {

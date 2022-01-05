@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Of The Entire World</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend+Deca:wght@100;200;300;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/history/css/main.css" />
+</head>
+<body>
+    <script>
+/*         const colors = ["#3CC157", "#2AA7FF", "#1B1B1B", "#FCBC0F", "#F85F36"]; */
+const colors = ["#a7a7a7", "#fff", "#1ed760", "#f15e6c", "#ffa42b", "#1ed760", "#3d91f4", "#0d72ea"];
+
+        const numBalls = 60;
+        const balls = [];
+
+        for (let i = 0; i < numBalls; i++) {
+        let ball = document.createElement("div");
+        ball.classList.add("ball");
+        ball.style.background = colors[Math.floor(Math.random() * colors.length)];
+        ball.style.left = `${Math.floor(Math.random() * 100)}vw`;
+        ball.style.top = `${Math.floor(Math.random() * 100)}vh`;
+        ball.style.transform = `scale(${Math.random()})`;
+        ball.style.width = `${Math.random()}em`;
+        ball.style.height = ball.style.width;
+        
+        balls.push(ball);
+        document.body.append(ball);
+        }
+
+        balls.forEach((el, i, ra) => {
+        let to = {
+            x: Math.random() * (i % 2 === 0 ? -11 : 11),
+            y: Math.random() * 12
+        };
+
+        let anim = el.animate(
+            [
+            { transform: "translate(0, 0)" },
+            { transform: `translate(${to.x}rem, ${to.y}rem)` }
+            ],
+            {
+            duration: (Math.random() + 1) * 1500,
+            direction: "alternate-reverse",
+            fill: "both",
+            iterations: Infinity,
+            easing: "ease-in-out"
+            }
+        );
+        });
+    </script>
+    <h1 class="big lato wght600 center blue"> History of the Entire World (Very Vaguely described) </h1>
+<div class="med lexend wght200 white">    
+    <p> Everything is everywhere and nowhere and it doesn't need to be now or later or earlier because it is at all the time. Alright? Alright.</p>
+    <p> "I don't want to be empty, I mean I am not empty but I want to be visible and seen by everyone and everything" ~ said the now so called 'Universe' and began
+        to expand from an infinitely dense point in space-time, expanding so fast and the temperature reached such high degrees, even Queen Elizabeth couldn't have
+        survived that.</p>
+    <p> A bunch of quarks came together to form neutrons and protons and they further messed around until there was a crap ton of things to play with.</p>
+    <p> Then, loads of gas clouds started to form, they collided so fast that they formed huge fast moving rocks, these rocks further did some stuff and turned into
+        a variety of space objects (celestial bodies) such as....oh you know, stars, black holes, planets, gas giants, asteroids, comets etc. During this period our so 
+        called Earth was just a massive ball of hot stuff and it was hit by a couple of asteroids which may have left some water there and then came steam. Quite some time 
+        later, the temperature starts to cool down and it starts raining. OH LOOK OUT FOR THE FLOODS, bam the Earth is full of water now, also known as ocean. Some time 
+        later some landmasses rise above the ocean because each wanted a fair share and also the asteroids were still falling.</p>
+    <p> Fast forward some boring amount of time and now there is some life! "Oh was it plants and fishes?" ~ asked nobody. Actually it was just a tiny microscopic
+        organism which lived in the depths of the ocean feeding upon chemical stuff and don't forget, they can make more of themselves. </p> 
+    <p> Fast forward some more time and cool, there are some tiny plants and oh look there are worms, they continue to advance by a process called "evolution". Then
+        came some more types of fishes, squids and some other living things but they never bothered to go on land because the Sun is dangerous and also there's no food there anyways.
+    </p>
+    <p> Oh did I mention that the aforementioned microscopic organisms could produce oxygen. By this time they produced enough oxygen to form ozone layer, and along 
+        with that came some vegetation on land so there was some effort from the sea creatures to explore the land but their permanent residence was still water because they need eggs
+        but those eggs could have been on land, no said the sea creatures and wasted more time. Then they finally agreed and started making eggs containing the offspring
+        along with water. Now there are land creatures.</p> 
+    <p> Land creatures kept reproducing, so there were more variety of land creatures and look out for the asteroid. Ah, I guess its too late. Nevermind there are 
+        still some survivors and they continue the cycle of life and again get hit by asteroid but they don't care and then one of the land creatures continued to evolve
+        into monkeys, apes, chimpanzees and they further evolved to fully bipedal organisms aka Humans. There were a couple of species in humans but except homosapiens, everyone
+        else died. Yikes.
+    </p>
+    <p>
+        [Neolithic Age]
+        Humans continued to survive and mastered the art of hunting, later some of them became vegetarian because why not. (The start of farming basically) And now everyone 
+        wanted to learn how to farm, so people started living closer to each other aka Communities and started trade (Barter Trading) and slowly the population was expanding
+        at unimaginable rates so they needed to protect each other too. Oh also, they knew how to make fire and so there was quite a bit of invention going on.
+    </p>
+    <p> As with all animals, humans wanted reliable sources for drinking water and so they started placing their settlements quite strategically near Iran (the then Mesopotomia)
+        Indus River Valley, Nile River, and some other rivers in China. Some time passed and Indus River Valley civilization is dead and someone from the north discovered
+        the place and read the ancient texts, hymns, and prayers and decided to make a religion out of it. Hinduism. A guy named Buddha somewhere in Asia sat under a tree 
+        for so long that he stopped caring about suffering and pain. It was decided that this needed to be a religion. Hence, Buddhism was born.
+    </p>
+    <p> In between our timeline, a guy named Jesus in Jerusalem decided to say that everyone should live peacefully and some other things, he started to become famous
+        and the amount of fame Jesus was earning and so he got crucified which only made him more influencial and popular. Meanwhile a guy called Mohammad Prophet in Mecca
+        got enlightened on a hill while meditating and preached a set of rules but instead got loads of threats and so later he had to flee to Medina from where his teachings
+        spread like wildfire.
+    </p>
+    <p> Then came the renaissance, or in simpler terms re-birth when the continent transitioned from Middle-Ages to Modern Age (15th - 16th Century). It also focused
+        on reviving and remembering the achievements of antiquity. This also happened to occur during the crisis of Middle Ages. The Renaissance came along with positives
+        such as changes in Science, Maths, Society, Politics, Art, Literature and started to eliminate superstitions. Martin Luther had a great contribution to The
+        Renaissance.
+    </p>
+</div>       
+</body>
+</html>

@@ -1,0 +1,228 @@
+:root {
+    --fontdef: 'Lexend Deca';
+    --fontzero: 'Kalam';
+    --fontone: 'Lato';
+    --big: calc(1em + 0.4vmin);
+    --med: calc(0.84em + 0.4vmin);
+    --sm: calc(0.6em + 0.4vmin);
+    --font200: 200;
+    --font300: 300;
+    --font400: 400;
+    --font500: 500;
+    --font600: 600;
+    --font700: 700;
+    --font800: 800;
+    --font900: 900;
+    --background-base: #121212;
+    --background-highlight: #1a1a1a;
+    --background-press: #000;
+    --background-elevated-base: #242424;
+    --background-elevated-highlight: #2a2a2a;
+    --background-elevated-press: #000;
+    --background-tinted-base: hsla(0,0%,100%,0.07);
+    --background-tinted-highlight: hsla(0,0%,100%,0.1);
+    --background-tinted-press: hsla(0,0%,100%,0.04);
+    --background-unsafe-for-small-text-base: #121212;
+    --background-unsafe-for-small-text-highlight: #121212;
+    --background-unsafe-for-small-text-press: #121212;
+    --text-base: #fff;
+    --text-subdued: #a7a7a7;
+    --text-bright-accent: #1ed760;
+    --text-negative: #f15e6c;
+    --text-warning: #ffa42b;
+    --text-positive: #1ed760;
+    --text-announcement: #3d91f4;
+    --essential-base: #fff;
+    --essential-subdued: #727272;
+    --essential-bright-accent: #1ed760;
+    --essential-negative: #e91429;
+    --essential-warning: #ffa42b;
+    --essential-positive: #1ed760;
+    --essential-announcement: #0d72ea;
+    --decorative-base: #fff;
+    --decorative-subdued: #292929;
+}
+
+body {
+    background: var(--background-highlight);
+    overflow: hidden;
+}
+
+
+.ball {
+    position: absolute;
+    border-radius: 100%;
+    opacity: 0.7;
+}
+
+.white {
+    color: var(--text-base);
+}
+
+.less-white {
+    color: var(--text-subdued);
+}
+
+.lime-green {
+    color: var(--text-bright-accent);
+}
+
+.light-red {
+    color: var(--text-negative);
+}
+
+.yellow {
+    color: var(--text-warning);
+}
+
+.green {
+    color: var(--text-positive);
+}
+
+.blue {
+    color: var(--text-announcement);
+}
+
+.grey-ish {
+    color: var(--essential-subdued);
+}
+
+.more-green {
+    color: var(--essential-bright-accent);
+}
+
+.very-red {
+    color: var(--essential-negative);
+}
+
+.more-yellow {
+    color: var(--essential-warning);
+}
+
+.good-green {
+    color: var(--essential-positive);
+}
+
+.more-blue {
+    color: var(--essential-announcement);
+}
+
+.black-ish {
+    color: var(--decorative-subdued);
+}
+
+.bg-white {
+    background-color: var(--text-base);
+}
+
+.bg-less-white {
+    background-color: var(--text-subdued);
+}
+
+.bg-lime-green {
+    background-color: var(--text-bright-accent);
+}
+
+.bg-light-red {
+    background-color: var(--text-negative);
+}
+
+.bg-yellow {
+    background-color: var(--text-warning);
+}
+
+.bg-green {
+    background-color: var(--text-positive);
+}
+
+.bg-blue {
+    background-color: var(--text-announcement);
+}
+
+.bg-grey-ish {
+    background-color: var(--essential-subdued);
+}
+
+.bg-more-green {
+    background-color: var(--essential-bright-accent);
+}
+
+.bg-very-red {
+    background-color: var(--essential-negative);
+}
+
+.bg-more-yellow {
+    background-color: var(--essential-warning);
+}
+
+.bg-good-green {
+    background-color: var(--essential-positive);
+}
+
+.bg-more-blue {
+    background-color: var(--essential-announcement);
+}
+
+.bg-black-ish {
+    background-color: var(--decorative-subdued);
+}
+
+.kalam {
+    font-family: var(--fontzero);
+}
+
+.lato {
+    font-family: var(--fontone);
+}
+
+.lexend {
+    font-family: var(--fontdef);
+}
+
+.big {
+    font-size: var(--big);
+}
+
+.med {
+    font-size: var(--med);
+}
+
+.sm {
+    font-size: var(--sm);
+}
+
+.wght200 {
+    font-weight: var(--font200);
+}
+
+.wght300 {
+    font-weight: var(--font300);
+}
+
+.wght400 {
+    font-weight: var(--font400);
+}
+
+.wght500 {
+    font-weight: var(--font500);
+}
+
+.wght600 {
+    font-weight: var(--font600);
+}
+
+.wght700 {
+    font-weight: var(--font700);
+}
+
+.wght800 {
+    font-weight: var(--font800);
+}
+
+.wght900 {
+    font-weight: var(--font900);
+}
+
+.center {
+    text-align: center;
+}
