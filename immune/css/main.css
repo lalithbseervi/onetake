@@ -15,19 +15,21 @@ body {
 h1 { 
     font-family: var(--onef);
     font-size: var(--fsz);
-    text-align: center;        
+    font-weight: 300;
+    text-align: center;
 }
 
 h2 {
     font-family: var(--onef);
     font-size: var(--fszs);
     text-align: center;
+    font-weight: 300;
 }
 
 p {
     font-family: var(--twof);
     font-size: var(--fszn);
-    font-weight: 200;
+    font-weight: 300;
 }
 
 a {
