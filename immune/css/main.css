@@ -64,5 +64,5 @@ a {
   
 .hover-underline-animation:hover:after {
     transform: scaleX(1);
-    transform-origin: bottom left;
+    transform-origin: center;
 }
