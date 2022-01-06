@@ -58,7 +58,7 @@ a {
     left: 0;
     /* background-color: #0087ca; */
     background-color: #000;
-    transform-origin: bottom right;
+    transform-origin: center;
     transition: transform 0.4s ease-out;
 }
   
