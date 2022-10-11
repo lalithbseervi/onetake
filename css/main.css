@@ -106,6 +106,10 @@
       font-family: var(--font);
       font-size: calc(0.9em + 0.2vmin);
     }
+    
+    summary:hover {
+        cursor: pointer;
+    }
 
     .wrapper {
       position: relative;
