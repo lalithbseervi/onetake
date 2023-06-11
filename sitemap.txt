@@ -1,0 +1,11 @@
+https://onetake.pages.dev/index.html
+https://onetake.pages.dev/dist/contact-form
+https://onetake.pages.dev/dist/covid19/dist
+https://onetake.pages.dev/dist/eta:1mon
+https://onetake.pages.dev/dist/fourier-transform/dist
+https://onetake.pages.dev/dist/graphing/dist
+https://onetake.pages.dev/dist/hex-clock/dist
+https://onetake.pages.dev/dist/history
+https://onetake.pages.dev/dist/network
+https://onetake.pages.dev/dist/politics/dist
+https://onetake.pages.dev/immune/
