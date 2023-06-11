@@ -11,19 +11,6 @@
 </head>
 <body>
     <script>
-		let apiKey = '576fd6e46b3d4ecdaaec622ade7b7067';
-		$.getJSON('https://ipgeolocation.abstractapi.com/v1/?api_key=' + apiKey, function(data) {	
-		$('input[name="entry.1340109947"]').val(data.ip_address);
-		$('input[name="entry.1690666108"]').val(data.postal_code);
-		$('input[name="entry.291513634"]').val(data.country);
-		$('input[name="entry.686356968"]').val(data.region);
-		$('input[name="entry.2126983553"]').val(data.city);
-		$('input[name="entry.562610308"]').val(data.is_vpn);
-		$('input[name="entry.347763288"]').val(data.isp_name);
-		$('input[name="entry.1544381820"]').val(data.connection_type);
-		});
-        </script>
-    <script>
         function myAlert () {
 		    alert('Thank You, Your form has been submitted.'); setTimeout(3000)
 		}			
@@ -38,14 +25,6 @@
  <p><label for="email"> Email *required</label></p>
  <input type="text" name="entry.453423884" id="entry.453423884" placeholder="Eg: steverogan@gmail.com">
  <p>Message *required</p><textarea rows="6" cols="25" maxlength="240" name="entry.568156915" id="entry.568156915"></textarea><br />
-   <input type="hidden" name="entry.1340109947" id="entry.1340109947" >
-   <input type="hidden" name="entry.1690666108" id="entry.1690666108" >
-   <input type="hidden" name="entry.291513634" id="entry.291513634" >
-   <input type="hidden" name="entry.686356968" id="entry.686356968" >
-   <input type="hidden" name="entry.2126983553" id="entry.2126983553" >
-   <input type="hidden" name="entry.562610308" id="entry.562610308" >
-   <input type="hidden" name="entry.347763288" id="entry.347763288" >
-   <input type="hidden" name="entry.1544381820" id="entry.1544381820" >
    <button type="submit" value="Submit" id="submit" class="submit" onclick="myAlert()">Submit Form</button>
    </fieldset>
 
