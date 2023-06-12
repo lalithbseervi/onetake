@@ -1,180 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="theme-color" content="currentColor" />
-    <meta name="keywords" content="Onetake, HomePage, TestPage, Wishtea" />
-    <meta name="description" content="ID 2053 Personal Web Portfolio" />
-    <meta name="author" content="Wishtea" />
-    <meta name="og:url" content="https://onetake.pages.dev/" />
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="https://onetake.pages.dev/images/favicon.ico" />
-    <link rel="apple-touch-icon" href="https://onetake/images/apple-touch-icon.png" />
-    <link rel="stylesheet" href="/css/main.css" />
-    <link rel="manifest" href="/manifest.json" />
-    <title>HomePage</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hate Speech</title>
+    <link rel="stylesheet" href="https://onetake.pages.dev/dist/politics/dist/anti_national/hatespeech/css/main.css" />
 </head>
-
 <body>
-    <script src="https://onetake.pages.dev/js/main.js"></script>
-    <p>Live Demo(S)</p>
-    <main>
-        <details>
-            <summary>Site Map</summary>
-            <a href="dist/covid19/dist/" target="blank">Covid 19 Study</a></br>
-            <a href="dist/fourier-transform/dist/" target="blank">Demonstrating Fourier Transforms</a></br>
-            <a href="dist/graphing/dist/" target="blank"> Graphs</a></br>
-            <a href="dist/hex-clock/dist/" target="blank"> Hex-Clock</a></br>
-            <a href="dist/contact-form/" target="blank"> Contact Form</a></br>
-            <details>
-                <summary>Politics</summary>
-                <a href="dist/politics/dist" target="blank"> Politics</a></br>
-                <a href="dist/win/farmer-protest/" target="blank"> Farmer's Protest</a></br>
-            </details>
-            <details>
-                <summary>Debatable Topics</summary>
-                <a href="dist/politics/dist/anti_national/sedition/" target="blank"> Sedition Law In India</a></br>
-                <a href="dist/politics/dist/anti_national/sabchangasi/" target="blank"> BJP's 2014 Manifesto</a></br>
-                <a href="dist/politics/dist/anti_national/hatespeech/" target="blank"> Hatespeech In India</a></br>
-            </details>
-</main>
-    <div id="clock"></div>
-    <div id="date"></div>
-    <div id="diff"></div>
-    <div id="stopwatch">
-        <span id="hour">00</span>
-        <span id="min">00</span>
-        <span id="sec">00</span>
-        <span id="millisec"></span>
-        <p>The above timer shows your watch time since this page was last loaded.</p>
-    </div>
-    <script>
-        function timekeeping() {
-            var today = new Date();
-            var chour = today.getHours();
-            var cmin = today.getMinutes();
-            var csecs = today.getSeconds();
-
-            ap = (chour < 12) ? "<span> AM </span>" : "<span> PM </span>";
-            chour = (chour == 0) ? 12 : chour;
-            chour = (chour > 12) ? chour - 12 : chour;
-
-            chour = checkTime(chour);
-            cmin = checkTime(cmin);
-            csecs = checkTime(csecs);
-            document.getElementById("clock").innerHTML = chour + ": " + cmin + ": " + csecs + "" + ap;
-
-            var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-            var curWeekDay = days[today.getDay()];
-            var curDay = today.getDate();
-            var curMonth = months[today.getMonth()];
-            var curYear = today.getFullYear();
-            var date = curWeekDay + ", " + curDay + " " + curMonth + " " + curYear;
-            document.getElementById("date").innerHTML = date;
-
-            var time = setTimeout(function () {
-                timekeeping()
-            }, 1000);
-
-            function checkTime(i) {
-                if (i < 10) {
-                    i = "0" + i;
-                }
-                return i;
-            }
-        }
-        timekeeping();
-
-        const date1 = new Date("12/11/2021");
-        const date2 = new Date();
-
-        const diffTime = Math.abs(date2 - date1);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-        document.getElementById("diff").innerHTML = diffDays + " days have passed since this website has been live.";
-        console.log(diffDays);
-    </script>
-    <script>
-        var x = 0;
-        var startstop = 0;
-
-        function startStop() {
-            startstop = startstop + 1;
-
-            if (startstop === 1) {
-                start();
-                document.getElementById("start").innerHTML = "Stop";
-            } else if (startstop === 2) {
-                document.getElementById("start").innerHTML = "Start";
-                startstop = 0;
-                stop();
-            }
-
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            startStop();
-        });
-
-        function start() {
-            x = setInterval(timer, 11);
-        }
-
-        function stop() {
-            clearInterval(x);
-        }
-
-        var millisec = 0;
-        var sec = 0;
-        var min = 0;
-        var hour = 0;
-
-        var millisecOut = 0;
-        var secOut = 0;
-        var minOut = 0;
-        var hourOut = 0;
-
-        function timer() {
-            millisecOut = checkTime(millisec);
-            secOut = checkTime(sec);
-            minOut = checkTime(min);
-            hourOut = checkTime(hour);
-
-            millisec = ++millisec;
-
-            if (millisec === 100) {
-                millisec = 0;
-                sec = ++sec;
-            }
-
-            if (sec == 60) {
-                min = ++min;
-                sec = 0;
-            }
-
-            if (min == 60) {
-                min = 0;
-                hour = ++hour;
-            }
-            document.getElementById("millisec").innerHTML = millisecOut;
-            document.getElementById("sec").innerHTML = secOut + ":";
-            document.getElementById("min").innerHTML = minOut + ":";
-            document.getElementById("hour").innerHTML = hourOut + ":";
-        }
-
-        function checkTime(i) {
-            if (i < 10) {
-                i = "0" + i;
-            }
-            return i;
-        }
-
-    </script>
-    <!-- Cloudflare Web Analytics --><!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "92c847aae25841cf9ac6f3434b34a612"}'></script> --><!-- End Cloudflare Web Analytics -->
+    <p>Instances of High Ranking politicians using divising and hate speech has increased by 500%, this number is not from an Anti-National organisation, but 
+        it is a number that NDTV obtained in a data collection exercise.
+    </p>
+    <p> Social media has seemed to make it easy for these very same politicians to incite more violence every day as they have followers ranging from few 
+        thousand to millions.
+    </p>
+    <p>
+        Note: The Hate Speech we are talking about is defined as follows: Any statement that are clearly communal, castiest or incites violence. Some of these
+        instances cover violations of laws that could invoke action such as Section 295A (outrageous feelings towards religion), Section 153 (promoting enmity
+        between groups) or Section 505 (making statements conducing to public mischief). However, unfortunately we don't see these laws being enforced properly
+        by the Executive and these politicians who promote hate are given a clean chit most of the times. It is we who have to decide whether we should allow them
+        to continue this outrageous and unlawful behaviour.
+    </p>
+    <p> 
+        Comments that may not be directly communal but are clearly loaded against a particular community or religion have also been included while sexist remarks
+        have been excluded to maintain and save ourselves from going irrational after reading so many ridiculous statements.
+    </p>
+    <p> This exercise was done during 2009-2014 and 2014-2018, and NDTV have specifically concentrated on elected representatives, members of the parliament, 
+        legislative assemblies & Chief Ministers.
+    </p>
+    <p> The data has been collected from network of reporters and have also checked about 1000 tweets till April 2018.</p>
+    <p> This is uncomparable to a perfect record but it still gives an rough idea. Based on their data, 124 instances of VIP hate speech by 45 politicians,
+        compared to 21 instances under UPA 2, an increase of 490% from May 2014.</p>
+    <p>
+        Out of the 45 politicians who were responsible for hate speeches since Modi Government came into power, only five cases were found where the politicians 
+        were cautioned or have been asked to publically apologise. 
+    </p>
+    <p> One case in particular that I am very unhappy about is T Raja Singh, a BJP MLA from Telengana. He has made hate speeches repeatedly. Some of his statements
+        go as follows: "Every Hindu should carry weapons like lathis and attack other communities' members if they said anything wrong." ~ January 2018.
+        Another instance goes like this: "Muslims have no business being in India, and should go to Pakistan or Bangladesh." ~ February 2018.
+    </p>
+    <p>
+        <bold>
+            Minority Baiting
+        </bold></br>
+        A popular theme in hate speeches is to delegitimise the Muslim beliefs or inciting fears of a Muslim takeover by playing fears on an increasing Muslim
+        population.
+    </p>
+    <p> Surendra Singh, BJP MLA from Uttar Pradesh said in January 2018, "Muslims who assimilate into our culture will stay in India. Those who will not are free 
+        to take asylum in any other country."</p>
+    <p> This database shows hate speeches till April 17, 2018.</p>
+    <iframe class="scribd_iframe_embed" src="https://www.scribd.com/embeds/376688838/content?start_page=1&view_mode=scroll&access_key=key-Yi25KTk48yXXlzpApWy5" tabindex="0" data-auto-height="true" data-aspect-ratio="0.053513003937226196" scrolling="no" width="100%" height="600" frameborder="0"></iframe>
+    <p>Note: All sources are mentioned below</p>
+    <details>
+        <summary>
+            List of Sources
+        </summary>
+        <span>
+            <a href="https://www.ndtv.com/india-news/under-narendra-modi-government-vip-hate-speech-skyrockets-by-500-1838925" target="blank"> NDTV </a> </br>
+            <a href="https://www.catchnews.com/national-news/case-registered-against-bjp-mla-for-delivering-hate-speech-97914.html" target="blank"> T Raja Singh's 
+                Story
+            </a></br>
+            <a href="https://www.ndtv.com/video/news/news/hate-speech-from-bjp-s-vinay-katiyar-why-do-muslims-live-in-india-478336" target="blank"> Go to Pakistan
+                or Bangladesh.
+            </a></br>
+            <a href="https://scribd.com/" target="blank">Scribd Database</a>
+        </span>
+    </details>
 </body>
-
 </html>
