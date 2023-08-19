@@ -4,11 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="theme-color" content="currentColor" />
-    <meta name="keywords" content="Onetake, HomePage, TestPage, Wishtea" />
-    <meta name="description" content="ID 2053 Personal Web Portfolio" />
-    <meta name="author" content="Wishtea" />
+    <meta name="keywords" content="Project Onetake Sitemap" />
+    <meta name="description" content="This is an experimental site that is meant for testing different ideas and concepts." />
     <meta name="og:url" content="https://onetake.pages.dev/" />
-    <meta name="description" content="Project 2021 extended to 2023, Demonstrating Fourier Transforms, Hex-Clock, Project Onetake" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="https://onetake.pages.dev/images/favicon.ico" />
     <link rel="apple-touch-icon" href="https://onetake/images/apple-touch-icon.png" />
@@ -28,66 +26,19 @@
             <a href="dist/fourier-transform/dist/" target="blank">Demonstrating Fourier Transforms</a></br>
             <a href="dist/graphing/dist/" target="blank"> Graphs</a></br>
             <a href="dist/hex-clock/dist/" target="blank"> Hex-Clock</a></br>
+            <a href="dist/network/index.html" target="blank"> Network Graph </a></br>
+            <a href="dist/relax/index.html" target="blank"> Relax </a>
     </details>
 </main>
 
-    <div id="clock"></div>
-    <div id="date"></div>
     <div id="diff"></div>
     <div id="stopwatch">  
         <span id="hour">00</span>
         <span id="min">00</span>
         <span id="sec">00</span>
         <span id="millisec"></span>
-        <p>The above timer shows your watch time since this page was last loaded.</p>
     </div>   
-    <script>
-        function timekeeping() {
-          var today = new Date();
-          var chour = today.getHours();
-          var cmin = today.getMinutes();
-          var csecs = today.getSeconds();
-  
-          ap = (chour < 12) ? "<span> AM </span>" : "<span> PM </span>";
-          chour = (chour == 0) ? 12 : chour;
-          chour = (chour > 12) ? chour - 12 : chour;
-  
-          chour = checkTime(chour);
-          cmin = checkTime(cmin);
-          csecs = checkTime(csecs);
-          document.getElementById("clock").innerHTML = chour + ": " + cmin + ": " + csecs + "" + ap;
-  
-          var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-          var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-          var curWeekDay = days[today.getDay()];
-          var curDay = today.getDate();
-          var curMonth = months[today.getMonth()];
-          var curYear = today.getFullYear();
-          var date = curWeekDay+", "+curDay+" "+curMonth+" "+curYear;
-          document.getElementById("date").innerHTML = date;
-  
-          var time = setTimeout(function () {
-            timekeeping()
-          }, 1000);
-  
-          function checkTime(i) {
-            if (i < 10) {
-              i = "0" + i;
-            }
-            return i;
-          }  
-        }
-        timekeeping();
-
-        const date1 = new Date("12/11/2021");
-        const date2 = new Date();
-
-        const diffTime = Math.abs(date2 - date1);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-        document.getElementById("diff").innerHTML = diffDays + " days have passed since this website has been live.";
-        console.log(diffDays);
-</script>
+    <p>The above timer shows your watch time since this page was last loaded.</p>
 <script>
     var x = 0;
     var startstop = 0;

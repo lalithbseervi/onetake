@@ -1,4 +1,4 @@
-html, body, #container, #acchedin, #buredin, #barchart, #elementslow-high, #elementshigh-low, #piechart1, #collatz {
+html, body, #container, #barchart, #elementslow-high, #elementshigh-low, #collatz {
       width: 100%;
       height: 100%;
     }
