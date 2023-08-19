@@ -46,7 +46,7 @@
       margin-bottom: 0.3em;
       margin-top: 0.3em;
       margin-right: 2em;
-      width: 37vw;
+      width: fit-content;
     }
 
     details > a{
