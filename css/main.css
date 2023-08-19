@@ -25,8 +25,8 @@
     }
 
     body{
-        width: 97%;
-        height: 97%;
+        width: 99%;
+        height: 98%;
         background-color: var(--backgroundColor);
     }
     
@@ -105,5 +105,5 @@
       font-family: var(--secondaryFont);
       font-size: calc(1em + 0.4vmin);
       font-weight: 600;
-      color: var(--black);
+      color: var(--green);
     }
