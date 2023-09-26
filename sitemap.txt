@@ -4,3 +4,4 @@ https://onetake.pages.dev/dist/fourier-transform/dist
 https://onetake.pages.dev/dist/graphing/dist
 https://onetake.pages.dev/dist/hex-clock/dist
 https://onetake.pages.dev/dist/network
+https://onetake.pages.dev/dist/ascii-cam
