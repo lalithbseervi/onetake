@@ -22,12 +22,12 @@ const constraints = {
     audio: false,
     video: {
         width: {
-            min: 365,
+            min: 375,
             ideal: 375,
             max: 2560,   
         },
         height: {
-            min: 660,
+            min: 700,
             ideal: 864,
             max: 1440,
         },
@@ -143,7 +143,6 @@ async function initializeCamera() {
 changeCam.addEventListener("click", function() {
     useFrontCamera = !useFrontCamera;
     initializeCamera();
-    video.play();
 })
 
 video.addEventListener('play', function () {
