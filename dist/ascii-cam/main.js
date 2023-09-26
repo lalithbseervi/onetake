@@ -16,7 +16,7 @@ const hiddenCanvas = document.querySelector('#hidden-canvas');
 const outputCanvas = document.querySelector('#output-canvas');
 const hiddenContext = hiddenCanvas.getContext('2d');
 const outputContext = outputCanvas.getContext('2d');
-const charset = '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+<>';
+const charset = '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+<>bcdefgjklnrsyz';
 
 const constraints = {
     audio: false,
@@ -32,9 +32,9 @@ const constraints = {
             max: 1440,
         },
         frameRate: {
-            min: 15,
-            ideal: 30,
-            max: 60,
+            min: 10,
+            ideal: 20,
+            max: 30,
         },
     },
 };
@@ -63,7 +63,7 @@ const getAverageRGB = (frame) => {
 };
 
 const processFrame = () => {
-    const fontHeight = 15;
+    const fontHeight = 16;
     const {
         videoWidth: width, 
         videoHeight: height,
@@ -129,7 +129,7 @@ function stopVideoStream() {
 }
 
 async function initializeCamera() {
-    stopVideoStream();
+    // stopVideoStream();
     constraints.video.facingMode = useFrontCamera ? "user" : "environment";
 
     try {
