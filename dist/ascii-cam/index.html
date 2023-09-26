@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Do Over</title>
+    <style>
+        .is-hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <video id="camera-stream"></video>
+    <canvas id="hidden-canvas"></canvas>
+    <canvas id="hidden-canvas"></canvas>
+    <canvas id="output-canvas"></canvas>
+    <button id="play" class="is-hidden">Play</button>
+    <button id="pause">Pause</button>
+    <button id="screenshot">Screenshot</button>
+    <button id="changeCam">Change Camera</button>
+    <div id="screenshotContainer"></div>
+    <canvas id="canvas" class="is-hidden"></canvas>
+</body>
+<script src="main.js"></script>
+</html>
