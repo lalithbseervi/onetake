@@ -22,7 +22,7 @@ const constraints = {
     audio: false,
     video: {
         width: {
-            min: 375,
+            min: 365,
             ideal: 375,
             max: 2560,   
         },
@@ -63,7 +63,7 @@ const getAverageRGB = (frame) => {
 };
 
 const processFrame = () => {
-    const fontHeight = 16;
+    const fontHeight = 15;
     const {
         videoWidth: width, 
         videoHeight: height,
