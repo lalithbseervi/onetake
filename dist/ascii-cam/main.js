@@ -10,7 +10,7 @@ const play = document.querySelector('#play');
 const pause = document.querySelector('#pause');
 const screenshot = document.querySelector('#screenshot');
 const changeCam = document.querySelector('#changeCam');
-const screenshotContainer = document.querySelector('screenshotContainer');
+const screenshotContainer = document.querySelector('#screenshotContainer');
 const canvas = document.querySelector('#canvas');
 const hiddenCanvas = document.querySelector('#hidden-canvas');
 const outputCanvas = document.querySelector('#output-canvas');
@@ -129,7 +129,7 @@ function stopVideoStream() {
 }
 
 async function initializeCamera() {
-    // stopVideoStream();
+    stopVideoStream();
     constraints.video.facingMode = useFrontCamera ? "user" : "environment";
 
     try {
