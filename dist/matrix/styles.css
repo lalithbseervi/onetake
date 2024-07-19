@@ -66,3 +66,7 @@ h2, p {
     background-color: #04AA6D;
     color: white;
 }
+
+.result {
+    font-size: x-large;
+}
