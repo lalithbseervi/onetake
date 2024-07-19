@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Matrix Operations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Enter Matrix A's and B's Values</h2>
+
+    <div class="grid-container parent">
+        <div class="grid-item">
+            <label for="A00">A[0][0]:</label> <input type="number" id="A00" required>
+        </div>
+        <div class="grid-item">
+            <label for="A01">A[0][1]:</label> <input type="number" id="A01" required>
+        </div>
+        <div class="grid-item">
+            <label for="A02">A[0][2]:</label> <input type="number" id="A02" required>
+        </div>
+        <div class="grid-item">
+            <label for="A10">A[1][0]:</label> <input type="number" id="A10" required>
+        </div>
+        <div class="grid-item">
+            <label for="A11">A[1][1]:</label> <input type="number" id="A11" required>
+        </div>
+        <div class="grid-item">
+            <label for="A12">A[1][2]:</label> <input type="number" id="A12" required>
+        </div>
+        <div class="grid-item">
+            <label for="A20">A[2][0]:</label> <input type="number" id="A20" required>
+        </div>
+        <div class="grid-item">
+            <label for="A21">A[2][1]:</label> <input type="number" id="A21" required>
+        </div>
+        <div class="grid-item">
+            <label for="A22">A[2][2]:</label> <input type="number" id="A22" required>
+        </div>
+    </div> <br>
+
+    <div class="grid-container parent hotfix">
+        <div class="grid-item">
+            <label for="B0">B[0]:</label> <input type="number" id="B0" required>
+        </div>
+        <div class="grid-item">
+            <label for="B1">B[1]:</label> <input type="number" id="B1" required>
+        </div>
+        <div class="grid-item">
+            <label for="B2">B[2]:</label> <input type="number" id="B2" required>
+        </div>
+    </div>
+
+    <button class="button button-default" onclick="processInput()">Calculate</button>
+
+    <div class="result">
+        <div id="determinant"></div>
+        <div id="adjoint"></div>
+        <div id="inverse"></div>
+        <div id="constant"></div>
+        <div id="resultant"></div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

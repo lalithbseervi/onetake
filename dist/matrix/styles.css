@@ -1,0 +1,65 @@
+html, body {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.125vw;
+}
+
+h2, p {
+    margin-left: 1vw;
+}
+
+.grid-container, .parent {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: repeat(3, 200px);
+    min-height: 10vw;
+    width: 100%;
+    justify-content: center;
+    justify-self: center;
+    justify-items: center;
+}
+
+.parent > div {
+    padding: 10px;
+    background-color: #EFCB68;
+    border-radius: 5px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 1vw;
+}
+
+.parent > div {
+    font-family: sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.hotfix {
+    margin-bottom: -22vw;
+}
+
+.button {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px auto;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    display: block;
+  }
+  
+.button-default {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #04AA6D;
+}
+  
+.button-default:hover {
+    background-color: #04AA6D;
+    color: white;
+}
