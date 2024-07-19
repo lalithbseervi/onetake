@@ -1,22 +1,29 @@
 html, body {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.125vw;
+    margin: 0;
+    height: 100%;
 }
 
 h2, p {
-    margin-left: 1vw;
+    margin-left: 1em;
 }
 
 .grid-container, .parent {
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(3, 200px);
-    grid-template-rows: repeat(3, 200px);
-    min-height: 10vw;
     width: 100%;
+    min-height: 45vh;
     justify-content: center;
     justify-self: center;
     justify-items: center;
+}
+
+.grid-container {
+    grid-template-columns: repeat(3, minmax(100px, 1.2fr)); 
+    grid-template-rows: repeat(3, minmax(100px, auto)); 
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .parent > div {
@@ -34,24 +41,21 @@ h2, p {
     font-weight: bold;
 }
 
-.hotfix {
-    margin-bottom: -22vw;
-}
-
 .button {
     background-color: #04AA6D;
     border: none;
     color: white;
-    padding: 16px 32px;
+    padding: 0.5em 1em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1em;
     margin: 0px auto;
     transition-duration: 0.4s;
     cursor: pointer;
     display: block;
-  }
+    max-width: 15em;
+}
   
 .button-default {
     background-color: white; 
