@@ -126,7 +126,7 @@ class Matrix_Method {
         let inverseText = "Inverse of the matrix:<br>";
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
-                inverseText += `${this.a_inverse[i][j]} `;
+                inverseText += `${this.a_inverse[i][j].toFixed(6).padStart(10, ' ')} `;
             }
             inverseText += "<br>";
         }
@@ -136,7 +136,7 @@ class Matrix_Method {
         document.getElementById('resultant').textContent = "Resultant matrix:";
         document.getElementById('resultant').innerHTML += "<br>";
         for (let i = 0; i < 3; i++) {
-            document.getElementById('resultant').innerHTML += `${this.resultant[i][0]}<br>`;
+            document.getElementById('resultant').innerHTML += `${this.resultant[i][0].toFixed(6).padStart(10, ' ')}<br>`;
         }
     
         document.getElementById('constant').textContent = "Constant matrix:";
