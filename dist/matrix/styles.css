@@ -59,8 +59,8 @@ h2, p {
     transition-duration: 0.4s;
     cursor: pointer;
     display: block;
-    min-height: 5em;
-    min-width: 15em;
+    min-height: 4em;
+    min-width: 13em;
     max-width: 25em;
 }
   
