@@ -114,7 +114,7 @@ class Matrix_Method {
         document.getElementById('determinant').textContent = `Determinant of the matrix A: ${this.det}`;
         document.getElementById('determinant').innerHTML += `<br>`;
     
-        let adjointText = "<br>Adjoint matrix:<br>";
+        let adjointText = "<br>Adjoint of the matrix:<br>";
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
                 adjointText += `${this.adj[i][j]} `;
@@ -123,7 +123,7 @@ class Matrix_Method {
         }
         document.getElementById('adjoint').innerHTML = adjointText + "<br>";
     
-        let inverseText = "Inverse matrix:<br>";
+        let inverseText = "Inverse of the matrix:<br>";
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
                 inverseText += `${this.a_inverse[i][j]} `;
