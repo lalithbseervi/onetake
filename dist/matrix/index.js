@@ -1,11 +1,11 @@
 class Matrix_Method {
     constructor() {
-        this.A = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]; // Matrix A initialized with zeros
-        this.B = [[0], [0], [0]]; // Constant matrix B initialized with zeros
-        this.temp = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]; // Temporary matrix initialized with zeros
-        this.adj = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]; // Adjoint matrix initialized with zeros
-        this.a_inverse = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]; // Inverse of matrix A initialized with zeros
-        this.resultant = [[0], [0], [0]]; // Resultant matrix initialized with zeros
+        this.A = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]; // Matrix A
+        this.B = [[0], [0], [0]]; // Constant matrix B
+        this.temp = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]; // Temporary matrix
+        this.adj = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]; // Adjoint matrix
+        this.a_inverse = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]; // Inverse of matrix A
+        this.resultant = [[0], [0], [0]]; // Resultant matrix
         this.det = 0; // Determinant of matrix A
         this.inverse_of_det = 0; // Inverse of determinant of matrix A
         this.answer = ["", "", ""]; // Placeholder for user confirmation
@@ -109,42 +109,65 @@ class Matrix_Method {
         }
     }
 
-    // Function to update HTML elements with results
     updateResults() {
-        document.getElementById('determinant').textContent = `Determinant of the matrix A: ${this.det}`;
-        document.getElementById('determinant').innerHTML += `<br>`;
+        // Update the determinant result
+        let determinantMatrix = document.getElementById('determinant');
+        determinantMatrix.innerHTML = ''; // Clear any existing content
+        let determinantText = document.createElement('p');
+        determinantText.textContent = `Determinant of the matrix A = ${this.det}`;
+        determinantMatrix.appendChild(determinantText);
     
-        let adjointText = "<br>Adjoint of the matrix:<br>";
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
-                adjointText += `${this.adj[i][j]} `;
-            }
-            adjointText += "<br>";
-        }
-        document.getElementById('adjoint').innerHTML = adjointText + "<br>";
+        // Update the adjoint matrix
+        let adjointMatrix = document.getElementById('adjoint');
+        adjointMatrix.innerHTML = ''; // Clear any existing content
+        let adjointText = document.createElement('p');
+        adjointText.innerHTML = "Adjoint of the matrix:";
+        adjointMatrix.appendChild(adjointText);
     
-        let inverseText = "Inverse of the matrix:<br>";
         for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
-                inverseText += `${this.a_inverse[i][j].toFixed(6).padStart(10, ' ')} `;
-            }
-            inverseText += "<br>";
-        }
-        document.getElementById('inverse').innerHTML = inverseText;
-        document.getElementById('inverse').innerHTML += "<br>";
-    
-        document.getElementById('resultant').textContent = "Resultant matrix:";
-        document.getElementById('resultant').innerHTML += "<br>";
-        for (let i = 0; i < 3; i++) {
-            document.getElementById('resultant').innerHTML += `${this.resultant[i][0].toFixed(6).padStart(10, ' ')}<br>`;
+            let rowMatrix = document.createElement('p');
+            rowMatrix.textContent = this.adj[i].map(val => val.toFixed(3).padStart(10, ' ')).join('');
+            adjointMatrix.appendChild(rowMatrix);
         }
     
-        document.getElementById('constant').textContent = "Constant matrix:";
-        document.getElementById('constant').innerHTML += "<br>";
+        // Update the inverse matrix
+        let inverseMatrix = document.getElementById('inverse');
+        inverseMatrix.innerHTML = ''; // Clear any existing content
+        let inverseText = document.createElement('p');
+        inverseText.innerHTML = "Inverse of the matrix:";
+        inverseMatrix.appendChild(inverseText);
+    
         for (let i = 0; i < 3; i++) {
-            document.getElementById('constant').innerHTML += `${this.B[i][0]}<br>`;
+            let rowMatrix = document.createElement('p');
+            rowMatrix.textContent = this.a_inverse[i].map(val => val.toFixed(6).padStart(10, ' ')).join(' ');
+            inverseMatrix.appendChild(rowMatrix);
         }
-        document.getElementById('constant').innerHTML += "<br>";
+    
+        // Update the resultant matrix
+        let resultantMatrix = document.getElementById('resultant');
+        resultantMatrix.innerHTML = ''; // Clear any existing content
+        let resultantText = document.createElement('p');
+        resultantText.textContent = "Resultant matrix:";
+        resultantMatrix.appendChild(resultantText);
+    
+        for (let i = 0; i < 3; i++) {
+            let rowMatrix = document.createElement('p');
+            rowMatrix.textContent = this.resultant[i][0].toFixed(6).padStart(10, ' ');
+            resultantMatrix.appendChild(rowMatrix);
+        }
+    
+        // Update the constant matrix
+        let constantMatrix = document.getElementById('constant');
+        constantMatrix.innerHTML = ''; // Clear any existing content
+        let constantText = document.createElement('p');
+        constantText.textContent = "Constant matrix:";
+        constantMatrix.appendChild(constantText);
+    
+        for (let i = 0; i < 3; i++) {
+            let rowMatrix = document.createElement('p');
+            rowMatrix.textContent = this.B[i][0];
+            constantMatrix.appendChild(rowMatrix);
+        }
     }
 }
 
