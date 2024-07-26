@@ -1,94 +1,62 @@
+:root {
+    --default-size: 3.125vw;
+    --desktop-default-size: 1vw;
+    --medium-font-size: 0.6666rem;
+    --heading-2: 3em;
+    --left-margin: 1em;
+    --min-container-height: 15vh;
+    --steel-gray: #71797E;
+    --bright-green: #04AA6D;
+}
+
 html, body {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.125vw;
     margin: 0;
-    height: 100%;
+    height: auto;
 }
 
-h2 {
-    font-size: 3em;
+h1, p {
+    margin-left: var(--left-margin);
 }
 
-h2, p {
-    margin-left: 1em;
+label, button, input, .result {
+    font-size: var(--default-size);
+}
+
+.grid-container {
+    grid-template-columns: repeat(3, minmax(10vh, 1.2fr)); 
+    grid-template-rows: repeat(3, minmax(10vh, auto)); 
+    max-width: 1rem;
+    margin: 0 auto;
 }
 
 .grid-container, .parent {
     display: grid;
     grid-gap: 10px;
     width: 100%;
-    min-height: 45vh;
+    /* min-height: var(--min-container-height); */
     justify-content: center;
     justify-self: center;
     justify-items: center;
 }
 
-.grid-container {
-    grid-template-columns: repeat(3, minmax(100px, 1.2fr)); 
-    grid-template-rows: repeat(3, minmax(100px, auto)); 
-    max-width: 600px;
-    margin: 0 auto;
-}
-
 .parent > div {
+    background-color: var(--steel-gray);
     padding: 10px;
-    /* background-color: #EFCB68; */
-    /* background-color: #B2BEB5; */
-    background-color: #71797E;
     border-radius: 5px;
     display: grid;
     place-items: center;
     margin-bottom: 1vw;
-}
-
-.parent > div {
-    font-size: 24px;
+    font-size: var(--medium-font-size);
     font-weight: bold;
 }
 
-.button {
-    background-color: #04AA6D;
-    border: none;
-    color: white;
-    padding: 0.5em 1em;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 2.5em;
-    margin: 0px auto;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    display: block;
-    min-height: 4em;
-    min-width: 13em;
-    max-width: 25em;
-}
-  
-.button-default {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #04AA6D;
-}
-  
-.button-default:hover {
-    background-color: #04AA6D;
-    color: white;
-}
-
-.result {
-    font-size: x-large;
-    margin-left: 4.5%;
-    margin-top: 2%;
-}
-
 input {
-    width: calc(100% - 30px); 
-    height: calc(100% - 15px);
-    /* padding: 10px; */
-    box-sizing: border-box;
-    font-size: 1.155em;
+    background: none;
+    height: 3.5em;
+    width: 4.125em;
+    box-sizing: content-box;
     text-align: center;
-    background: none; 
     align-self: center;
     margin-top: 0.5em;
     margin-bottom: 1em;
@@ -103,16 +71,75 @@ input:focus {
     outline-color: black;
 }
 
-@media screen and (min-width: 1024px) {
-    .button {
-        max-width: 5em;
-        max-height: 1em;
-        font-size: 0.85em;
-    }
+.button {
+    background-color: var(--bright-green);
+    border: none;
+    color: white;
+    padding: 0.5em 1em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    /* font-size: 2.5em; */
+    margin: 0px auto;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    display: block;
+    min-width: 4.225em;
+    min-height: 3em;
 }
 
-@media screen and (max-width: 500px) {
-    .result {
-        font-size: 220em;
+.button-default {
+    background-color: white; 
+    color: black; 
+    border: 2px solid var(--bright-green);
+}
+  
+.button-default:hover {
+    background-color: var(--bright-green);
+    color: white;
+}
+
+.result {
+    margin-left: 4.5%;
+    margin-top: 3%;
+}
+
+@media screen and (min-width: 992px) {
+
+    label, button, input, .result {
+        font-size: var(--desktop-default-size);
+    }
+
+    button {
+        max-height: 1em;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(3, minmax(1vh, 1.2fr)); 
+        grid-template-rows: repeat(3, minmax(1vh, auto)); 
+        max-width: 85vh;
+        max-height: 5%;
+        margin: 0 auto;
+    }
+
+    .grid-container, .parent {
+        display: grid;
+        grid-gap: 10px;
+        width: 100%;
+        justify-content: center;
+        justify-self: center;
+        justify-items: center;
+    }
+
+    .parent > div {
+        background-color: var(--steel-gray);
+        padding: 10px;
+        border-radius: 5px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 1vw;
+        font-size: var(--medium-font-size);
+        font-weight: bold;
+        width: 18vh;
     }
 }
