@@ -68,18 +68,17 @@ class Matrix_Method {
                 }
             }
 
-            else {
-                for (i = 0; i < 3; i++) {
-                    for (j = 0; j < 3; j++) {
-                        this.consistency += this.adj[i][j] * this.B[j][0];
-                    }
-                }
-            }
-
             for (let i = 0; i < 3; i++) {
                 this.resultant[i][0] = 0.0;
                 for (let j = 0; j < 3; j++) {
                     this.resultant[i][0] += this.a_inverse[i][j] * this.B[j][0];
+                }
+            }
+        }
+        else {
+            for (i = 0; i < 3; i++) {
+                for (j = 0; j < 3; j++) {
+                    this.consistency += this.adj[i][j] * this.B[j][0];
                 }
             }
         }
