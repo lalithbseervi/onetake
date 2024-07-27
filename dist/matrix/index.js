@@ -9,6 +9,7 @@ class Matrix_Method {
         this.det = 0; // Determinant of matrix A
         this.inverse_of_det = 0; // Inverse of determinant of matrix A
         this.answer = ["", "", ""]; // Placeholder for user confirmation
+        this.consistency = 0;
     }
 
     // Function to set matrix A from HTML input
@@ -67,6 +68,14 @@ class Matrix_Method {
                 }
             }
 
+            else {
+                for (i = 0; i < 3; i++) {
+                    for (j = 0; j < 3; j++) {
+                        this.consistency += this.adj[i][j] * this.B[j][0];
+                    }
+                }
+            }
+
             for (let i = 0; i < 3; i++) {
                 this.resultant[i][0] = 0.0;
                 for (let j = 0; j < 3; j++) {
@@ -98,6 +107,16 @@ class Matrix_Method {
             console.log(row);
         }
 
+        if(this.consistency != 0) {
+                console.log("The system of equations is inconsistent";
+            }
+            else if(this.consistency == 0) {
+                console.log("The system of equation may have infinite or 0 solutions";
+            }
+            else {
+                console.log("Unknown error");
+        }
+        
         console.log("Resultant matrix:");
         for (let i = 0; i < 3; i++) {
             console.log(this.resultant[i][0]);
@@ -116,7 +135,8 @@ class Matrix_Method {
         let determinantText = document.createElement('p');
         determinantText.textContent = `Determinant of the matrix A = ${this.det}`;
         determinantMatrix.appendChild(determinantText);
-    
+
+        
         // Update the adjoint matrix
         let adjointMatrix = document.getElementById('adjoint');
         adjointMatrix.innerHTML = ''; // Clear any existing content
@@ -129,6 +149,20 @@ class Matrix_Method {
             rowMatrix.textContent = this.adj[i].map(val => val.toFixed(3).padStart(10, ' ')).join('');
             adjointMatrix.appendChild(rowMatrix);
         }
+
+        let consistencyCheck = document.getElementById('consistency');
+        consistencyCheck.innerHTML = '';
+        let consistencyCheckText = document.createElement('p');
+        if(this.consistency != 0) {
+                consistencyCheckText.innerHTML = "The system of equations is inconsistent";
+            }
+            else if(this.consistency == 0) {
+                consistencyCheckText.innerHTML = "The system of equation may have infinite or 0 solutions";
+            }
+            else {
+                consistencyCheckText.innerHTML = "Unknown error";
+        }
+        consistencyCheck.appendChild(consistencyCheckText);
     
         // Update the inverse matrix
         let inverseMatrix = document.getElementById('inverse');
