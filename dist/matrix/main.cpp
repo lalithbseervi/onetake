@@ -51,7 +51,7 @@ void Matrix_Method :: input() {
             cout << B[i][0] << "\n";
     }
 
-    // confirm the constant matrice
+    // confirm the constant matrix
 
     cout << "Confirm that the above entries are correct (y/n): ";
     cin >> answer;
@@ -109,7 +109,7 @@ void Matrix_Method :: calculate() {
         resultant[i][0] = 0.0;
     }
 
-    // Perform matrix-vector multiplication
+    // Perform matrix multiplication
     for (i = 0; i < 3; i++) {
         for (j = 0; j < 3; j++) {
             resultant[i][0] += a_inverse[i][j] * B[j][0];
