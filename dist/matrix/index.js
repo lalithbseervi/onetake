@@ -107,10 +107,10 @@ class Matrix_Method {
         }
 
         if(this.consistency != 0) {
-                console.log("The system of equations is inconsistent";
+                console.log("The system of equations is inconsistent");
             }
             else if(this.consistency == 0) {
-                console.log("The system of equation may have infinite or 0 solutions";
+                console.log("The system of equation may have infinite or 0 solutions");
             }
             else {
                 console.log("Unknown error");
