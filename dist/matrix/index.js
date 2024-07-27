@@ -169,7 +169,11 @@ class Matrix_Method {
             consistencyCheck.innerHTML = '';
             let consistencyCheckText = document.createElement('p');
             consistencyCheckText.innerHTML = `Adj of A * B = ${this.consistency}. Therefore system of equations has unique solution.`;
-        } 
+            consistencyCheck.appendChild(consistencyCheckText);
+        }
+        else {
+            console.log("Illegal");
+        }
     
         // Update the inverse matrix
         let inverseMatrix = document.getElementById('inverse');
