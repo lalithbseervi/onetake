@@ -154,16 +154,22 @@ class Matrix_Method {
             consistencyCheck.innerHTML = '';
             let consistencyCheckText = document.createElement('p');
             if(this.consistency != 0) {
-                    consistencyCheckText.innerHTML = `Adj of A * B = ${this.consistency}. Therefore system of equations is inconsistent`;
+                    consistencyCheckText.innerHTML = `Adj of A * B = ${this.consistency}. Therefore system of equations is inconsistent.`;
                 }
                 else if(this.consistency == 0) {
-                    consistencyCheckText.innerHTML = `Adj of A * B = ${this.consistency}. Therefore system of equation may have infinite or 0 solutions`;
+                    consistencyCheckText.innerHTML = `Adj of A * B = ${this.consistency}. Therefore system of equation may have infinite or 0 solutions.`;
                 }
                 else {
-                    consistencyCheckText.innerHTML = `Adj of A * B = ${this.consistency}. Unknown error`;
+                    consistencyCheckText.innerHTML = `Adj of A * B = ${this.consistency}. Unknown error.`;
                 }
             consistencyCheck.appendChild(consistencyCheckText);
         }
+        else if (this.det != 0) {
+            let consistencyCheck = document.getElementById('consistency');
+            consistencyCheck.innerHTML = '';
+            let consistencyCheckText = document.createElement('p');
+            consistencyCheckText.innerHTML = `Adj of A * B = ${this.consistency}. Therefore system of equations has unique solution.`;
+        } 
     
         // Update the inverse matrix
         let inverseMatrix = document.getElementById('inverse');
