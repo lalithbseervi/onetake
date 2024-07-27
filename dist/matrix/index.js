@@ -76,8 +76,8 @@ class Matrix_Method {
             }
         }
         else {
-            for (i = 0; i < 3; i++) {
-                for (j = 0; j < 3; j++) {
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
                     this.consistency += this.adj[i][j] * this.B[j][0];
                 }
             }
