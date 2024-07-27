@@ -153,13 +153,13 @@ class Matrix_Method {
         consistencyCheck.innerHTML = '';
         let consistencyCheckText = document.createElement('p');
         if(this.consistency != 0) {
-                consistencyCheckText.innerHTML = "The system of equations is inconsistent";
+                consistencyCheckText.innerHTML = `Adj of A * B = ${this.consistency}. Therefore system of equations is inconsistent`;
             }
             else if(this.consistency == 0) {
-                consistencyCheckText.innerHTML = "The system of equation may have infinite or 0 solutions";
+                consistencyCheckText.innerHTML = `Adj of A * B = ${this.consistency}. Therefore system of equation may have infinite or 0 solutions`;
             }
             else {
-                consistencyCheckText.innerHTML = "Unknown error";
+                consistencyCheckText.innerHTML = `Adj of A * B = ${this.consistency}. Unknown error`;
         }
         consistencyCheck.appendChild(consistencyCheckText);
     
