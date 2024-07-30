@@ -6,7 +6,6 @@ class Matrix_Method {
     private:
         int A[3][3], B[3][1], i, j, n=3;
         float temp[3][3], adj[3][3], a_inverse[3][3], resultant[3][1], det = 0, inverse_of_det = 0;
-        char answer[3];
     public:
         void input();
         void calculate();
@@ -16,26 +15,10 @@ class Matrix_Method {
 // take the input
 void Matrix_Method :: input() {
     cout << "Enter the 9 elements of the matrix of order 3.\n";
-
+    // take the input for matrix A
     for(i=0; i<n; i++) {
         for(j=0; j<n; j++) 
             cin >> A[i][j];
-    }
-
-    // confirm the matrix values
-    for(i=0; i<n; i++) {
-        for(j=0; j<n; j++) {
-            cout << A[i][j] << " ";
-        }
-        cout << "\n";
-    }
-
-    cout << "Confirm that the above entries are correct (y/n): ";
-    cin >> answer;
-
-    if(answer == "no" || answer == "n") {
-        cout << "Kindly enter the elements again.";
-        input();
     }
 
     // take the constant matrix
@@ -43,24 +26,13 @@ void Matrix_Method :: input() {
             cout << "Enter the values for the constant matrix: ";
             cin >> B[i][0];
     }
-
-    for(i=0; i<3; i++) {
-            cout << B[i][0] << "\n";
-    }
-
-    // confirm the constant matrix
-    cout << "Confirm that the above entries are correct (y/n): ";
-    cin >> answer;
-
-    if(answer == "no" || answer == "n") {
-        cout << "Kindly enter the elements again.";
-        input();
-    }
 }
 
 void Matrix_Method :: calculate() {
+    // calculate determinant of matrix A
     det = (A[0][0]*(A[1][1]*A[2][2] - A[2][1]*A[1][2])) - (A[0][1]*(A[1][0]*A[2][2] - A[2][0]*A[1][2])) + (A[0][2]*(A[1][0]*A[2][1] - A[2][0]*A[1][1]));
 
+    // calculate adjacent
     temp[0][0] = A[1][1] * A[2][2] - A[1][2] * A[2][1];
     temp[0][1] = -(A[1][0] * A[2][2] - A[1][2] * A[2][0]);
     temp[0][2] = A[1][0] * A[2][1] - A[1][1] * A[2][0];
@@ -78,6 +50,7 @@ void Matrix_Method :: calculate() {
             adj[j][i] = temp[i][j];
     }
 
+    // calculate 1/det(A) if det(A) != 0, then calculate A inverse
     if (det != 0) {
         inverse_of_det = 1.0 / det;
 
@@ -88,11 +61,7 @@ void Matrix_Method :: calculate() {
         }
     }
 
-    for (i = 0; i < 3; i++) {
-        resultant[i][0] = 0.0;
-    }
-
-    // Perform matrix multiplication
+    // calculate resultant matrix
     for (i = 0; i < 3; i++) {
         for (j = 0; j < 3; j++) {
             resultant[i][0] += a_inverse[i][j] * B[j][0];
