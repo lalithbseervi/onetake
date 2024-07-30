@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 // define all methods and data required
@@ -24,7 +23,6 @@ void Matrix_Method :: input() {
     }
 
     // confirm the matrix values
-
     for(i=0; i<n; i++) {
         for(j=0; j<n; j++) {
             cout << A[i][j] << " ";
@@ -41,7 +39,6 @@ void Matrix_Method :: input() {
     }
 
     // take the constant matrix
-
     for(i=0; i<3; i++) {
             cout << "Enter the values for the constant matrix: ";
             cin >> B[i][0];
@@ -52,7 +49,6 @@ void Matrix_Method :: input() {
     }
 
     // confirm the constant matrix
-
     cout << "Confirm that the above entries are correct (y/n): ";
     cin >> answer;
 
@@ -77,12 +73,6 @@ void Matrix_Method :: calculate() {
     temp[2][1] = -(A[0][0] * A[1][2] - A[0][2] * A[1][0]);
     temp[2][2] = A[0][0] * A[1][1] - A[0][1] * A[1][0];
 
-    // temp[3][3] = {
-    //     { A[1][1] * A[2][2] - A[1][2] * A[2][1], -(A[1][0] * A[2][2] - A[1][2] * A[2][0]), A[1][0] * A[2][1] - A[1][1] * A[2][0] },
-    //     { -(A[0][1] * A[2][2] - A[0][2] * A[2][1]), A[0][0] * A[2][2] - A[0][2] * A[2][0], -(A[0][0] * A[2][1] - A[0][1] * A[2][0]) },
-    //     { A[0][1] * A[1][2] - A[0][2] * A[1][1], -(A[0][0] * A[1][2] - A[0][2] * A[1][0]), A[0][0] * A[1][1] - A[0][1] * A[1][0] }
-    // };
-
     for(i=0; i<3; ++i) {
         for(j=0; j<3; ++j)
             adj[j][i] = temp[i][j];
@@ -97,13 +87,6 @@ void Matrix_Method :: calculate() {
             }
         }
     }
-    // else {
-    //     for (i = 0; i < 3; ++i) {
-    //         for (j = 0; j < 3; ++j) {
-    //             consistent[i][j] = B[i][j] * adj[i][j];
-    //         }
-    //     }
-    // }
 
     for (i = 0; i < 3; i++) {
         resultant[i][0] = 0.0;
