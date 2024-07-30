@@ -8,7 +8,6 @@ class Matrix_Method {
         this.resultant = [[0], [0], [0]]; // Resultant matrix
         this.det = 0; // Determinant of matrix A
         this.inverse_of_det = 0; // Inverse of determinant of matrix A
-        this.answer = ["", "", ""]; // Placeholder for user confirmation
         this.consistency = 0;
     }
 
