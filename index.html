@@ -1,121 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="theme-color" content="currentColor" />
-    <meta name="keywords" content="Project Onetake Sitemap" />
-    <meta name="description" content="This is an experimental site that is meant for testing different ideas and concepts." />
-    <meta name="og:url" content="https://onetake.pages.dev/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="https://onetake.pages.dev/images/favicon.ico" />
-    <link rel="apple-touch-icon" href="https://onetake/images/apple-touch-icon.png" />
-    <link rel="stylesheet" href="/css/main.css" />
-    <link rel="manifest" href="/manifest.json" />
-    <title>HomePage</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="keywords" content="Lalith Web Portfolio Projects">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="og:url" content="https://onetake.pages.dev/">
+    <!-- <link rel="icon" type="image/x-icon" href="https://onetake.pages.dev/images/favicon.ico"/> -->
+    <link rel="apple-touch-icon" href="https://onetake/images/apple-touch-icon.png"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <title>Web Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </head>
 <body>
-    <script src="https://onetake.pages.dev/js/main.js"></script>
-    <!-- Main Heading -->
-        <p>Live Demo(S)</p>
-<!-- Sitemap -->
-<main>  
-    <details>
-        <summary>Site Map</summary>
-            <a href="dist/covid19/dist/" target="blank">Covid 19 Study</a></br>
-            <a href="dist/fourier-transform/dist/" target="blank">Demonstrating Fourier Transforms</a></br>
-            <a href="dist/graphing/dist/" target="blank"> Graphs</a></br>
-            <a href="dist/hex-clock/dist/" target="blank"> Hex-Clock</a></br>
-            <a href="dist/network/index.html" target="blank"> Network Graph </a></br>
-            <a href="dist/relax/index.html" target="blank"> Relax </a></br>
-            <a href="dist/matrix/index.html" target="blank"> Solve sytem of linear equations </a></br>
-    </details>
-</main>
+  <div class="bg"></div>
+  <nav class="z-10 fixed top-0 flex-no-wrap flex w-full items-center justify-between bg-[#001f3f] py-2 shadow-md shadow-black/5 dark:bg-[#001f3f] dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4">
+    <div class="flex w-full flex-wrap items-center justify-between px-3">
+      <!-- Hamburger button for mobile view -->
+      <button
+          class="block border-0 bg-transparent px-2 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
+          type="button" data-te-collapse-init data-te-target="#navbarSupportedContent1"
+          aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+      <!-- Hamburger icon -->
+      <span class="[&>svg]:w-7">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-7 w-7">
+          <path fill-rule="evenodd"
+              d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+              clip-rule="evenodd" />
+        </svg>
+      </span>
+    </button>
 
-    <div id="diff"></div>
-    <div id="stopwatch">  
-        <span id="hour">00</span>
-        <span id="min">00</span>
-        <span id="sec">00</span>
-        <span id="millisec"></span>
-    </div>   
-    <p>The above timer shows your watch time since this page was last loaded.</p>
-<script>
-    var x = 0;
-    var startstop = 0;
-
-    function startStop() { 
-        startstop = startstop + 1;
-
-        if (startstop === 1) {
-            start();
-            document.getElementById("start").innerHTML = "Stop";
-        } else if (startstop === 2) {
-            document.getElementById("start").innerHTML = "Start";
-            startstop = 0;
-            stop();
+    <!-- Collapsible navigation container -->
+    <div class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
+        id="navbarSupportedContent1" data-te-collapse-item>
+      <!-- Left navigation links -->
+      <ul class="list-style-none mr-auto flex flex-col pl-0 lg:flex-row" data-te-navbar-nav-ref>
+        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+          <!-- Projects link -->
+          <a class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
+            href="#projects" data-te-nav-link-ref>Projects</a>
+        </li>
+        <!-- About me link -->
+        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+          <a class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
+            href="#" onclick="alert()" data-te-nav-link-ref>About</a>
+        </li>
+        <!-- Contact link -->
+        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+          <a class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
+            href="#" onclick="alert()" data-te-nav-link-ref>Contact</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </div>
+  </nav>
+  <main class="flex justify-center items-center h-screen">
+    <pre><h1 class="text-6xl text-white text-center">Hi, Lalith B Seervi here!</h1>
+    <h2 class="text-4xl text-slate-300 text-center">Student Web Developer</h2></pre>
+  </main>
+  <div class="m-4 bg-[#39CCCC] rounded-lg p-4 flex flex-wrap">
+    <h2 class="ml-4 text-4xl items-center justify-center text-center" id="projects">My Projects</h2>
+    <div class="relative flex flex-col mt-16 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-1/3 h-1/2">
+      <div class="p-7">
+        <h5 class="block mb-2 text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+          ASCII Webcam
+        </h5>
+        <p class="block text-base antialiased font-light leading-relaxed text-inherit">
+          See the world through the webcam but in ASCII because why not?
+        </p>
+      </div>
+      <div class="p-6 pt-0">
+        <a href="https://onetake.pages.dev/dist/ascii-cam/" target="_blank" class="inline-block">
+          <button
+            class="flex items-center gap-2 px-2 py-2  text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none hover:bg-gray-900/10 active:bg-gray-900/20 shadow-lg shadow-indigo-500/40 "
+            type="button">
+            Learn More
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="mb-1 w-4 h-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
+            </svg>
+          </button>
+        </a>
+      </div>
+    </div>
+    <div class="ml-4 relative flex flex-col mt-16 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-1/3 h-1/2">
+      <div class="p-7">
+        <h5 class="block mb-2 text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+          Fourier Transforms
+        </h5>
+        <p class="block  text-base antialiased font-light leading-relaxed text-inherit">
+          The voice said, "Let math draw it!" and thus arrived Fourier to the rescue.
+        </p>
+      </div>
+      <div class="p-6 pt-0">
+        <a href="https://onetake.pages.dev/dist/fourier-transform/dist/" target="_blank" class="inline-block">
+          <button
+            class="flex items-center gap-2 px-2 py-2 text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none hover:bg-gray-900/10 active:bg-gray-900/20 shadow-lg shadow-indigo-500/40 "
+            type="button">
+            Learn More
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="mb-1 w-4 h-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
+            </svg>
+          </button>
+        </a>
+      </div>
+    </div>
+    <div class="ml-52 relative flex flex-col mt-16 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-1/3 h-1/2">
+      <div class="p-7">
+        <h5 class="block mb-2  text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+          Hex-Clock
+        </h5>
+        <p class="block  text-base antialiased font-light leading-relaxed text-inherit">
+          Let the background colors relax you as you watch the time pass by.
+        </p>
+      </div>
+      <div class="p-6 pt-0">
+        <a href="https://onetake.pages.dev/dist/hex-clock/dist/" target="_blank" class="inline-block">
+          <button
+            class="flex items-center gap-2 px-2 py-2 text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none hover:bg-gray-900/10 active:bg-gray-900/20 shadow-lg shadow-indigo-500/40 "
+            type="button">
+            Learn More
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="mb-1 w-4 h-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
+            </svg>
+          </button>
+        </a>
+      </div>
+    </div>
+    <div class="ml-4 relative flex flex-col mt-16 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-1/3 h-1/2">
+      <div class="p-7">
+        <h5 class="block mb-2  text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+          Network
+        </h5>
+        <p class="block  text-base antialiased font-light leading-relaxed text-inherit">
+          How interconnected are the various disciplines of study? Find out below!
+        </p>
+      </div>
+      <div class="p-6 pt-0">
+        <a href="https://onetake.pages.dev/dist/network/" target="_blank" class="inline-block">
+          <button
+            class="flex items-center gap-2 px-2 py-2  text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none hover:bg-gray-900/10 active:bg-gray-900/20 shadow-lg shadow-indigo-500/40 "
+            type="button">
+            Learn More
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="mb-1 w-4 h-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
+            </svg>
+          </button>
+        </a>
+      </div>
+    </div>  
+  </div>
+  <div class="alert"></div>
+  <script>
+        if (window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.body.classList.add('dark');
         }
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const div = document.getElementByClassName("alert").innerHTML;
+    })
 
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
-        startStop();
-    });
-
-    function start() {
-        x = setInterval(timer, 11);
-    }
-
-    function stop() {
-        clearInterval(x);
-    }
-
-    var millisec = 0;
-    var sec = 0;
-    var min = 0;
-    var hour = 0;
-
-    var millisecOut = 0;
-    var secOut = 0;
-    var minOut = 0;
-    var hourOut = 0;
-    
-    function timer() {
-        millisecOut = checkTime(millisec);
-        secOut = checkTime(sec);
-        minOut = checkTime(min);
-        hourOut = checkTime(hour);
-
-        millisec = ++millisec;
-
-        if (millisec === 100) {
-            millisec = 0;
-            sec = ++sec;
-        }
-
-        if (sec == 60) {
-            min = ++min;
-            sec = 0;
-        }
-
-        if (min == 60) {
-            min = 0;
-            hour = ++hour;
-        }
-        document.getElementById("millisec").innerHTML = millisecOut;
-        document.getElementById("sec").innerHTML = secOut + ":";
-        document.getElementById("min").innerHTML = minOut + ":";
-        document.getElementById("hour").innerHTML = hourOut + ":";
-    }
-
-    function checkTime(i) {
-        if (i < 10) {
-            i = "0" + i;
-        }
-        return i;
-    }
-
-</script>
-    <!-- Cloudflare Web Analytics --><!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "92c847aae25841cf9ac6f3434b34a612"}'></script> --><!-- End Cloudflare Web Analytics -->
+    function alert() {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        timer: 5000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        heightAuto: "false",
+        height: "1em"
+      })
+      Toast.fire({
+        title: "The developer is still working on this! It should be here any moment."
+      });  
+    };
+  </script>
 </body>
 </html>
