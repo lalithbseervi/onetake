@@ -1,109 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Lexend+Deca:wght@100;200;300;400&&family=Oooh+Baby&display=swap"&display=swap');
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
 
-:root{
-        --font: 'Lexend';
-        --secondaryFont: 'Lato';
-        --first-stage-padding: 1em;
-        --first-stage-left-margin: 2em; 
-        --red: #b00020;
-        --white: #fff;
-        --black: #000;
-        --gray: #666666;
-        --very-light-gray: #bbb;
-        --purple: #705dcb;
-        --teal: #4ca2bd;
-        --bg-light: #1e242e;
-        --bg-dark: #151a21;
-        --bgcolor: #191f23;
-        --green: #40cf6c;
-        --border-col: #14906a;
-        /* new colors */
-        --backgroundColor: #1f2833;
-        --secondaryColor: #EDF2F4;
-        --additionalColor: #8D99AE;
-    }
+body {
+    margin: 0;
+    background-color: #003366;
+    font-family: Helvetica;
+}
 
-    body{
-        width: 99%;
-        height: 98%;
-        background-color: var(--backgroundColor);
-    }
-    
-    p{
-        font-family: var(--font);
-        color: var(--white);
-    }
-    
-    details {
-      display: block;
-      background: #05386b;
-      padding: var(--first-stage-padding);
-      border: 0.1em solid var(--secondaryColor);
-      color: var(--secondaryColor);
-      border-radius: 0.25em;
-      border-width: 0.125em;
-      margin-bottom: 0.3em;
-      margin-top: 0.3em;
-      margin-right: 2em;
-      width: fit-content;
-    }
+h1, h2 {
+    display: block;
+}
 
-    details > a{
-      display: inline-block;
-      position: relative;
-      background-color: var(--white);
-      font-family: var(--secondaryFont);
-      font-size: 1em;
-      text-decoration: none;
-      margin-left: var(--first-stage-left-margin);
-      margin-bottom: 0.5em;
-      padding: 0.18625em;
-      border-radius: 0.5em;
-      width: fit-content;
-    }
-    
-    a:after{
-      content: ' ';
-      position: absolute;
-      width: 100%;
-      transform: scaleX(0);
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #000000;
-      transform-origin: center;
-      transition: transform 0.3s ease-out;
-    }
-
-    a:hover::after{
-      transform: scaleX(0.98);
-      transform-origin: center;
-    }
-
-    a:visited{
-        color: var(--red);
-    }
-
-    summary{
-      font-family: var(--font);
-      font-size: calc(0.9em + 0.2vmin);
-      margin-bottom: 0.5em;
-    }
-    
-    summary:hover {
-      cursor: pointer;
-    }
-
-    .wrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9, for an aspect ratio of 1:1 change to this value to 100% */ 
-    }
-
-    #diff, #stopwatch {
-      display: block;
-      font-family: var(--secondaryFont);
-      font-size: calc(1em + 0.4vmin);
-      font-weight: 600;
-      color: var(--green);
-    }
+.bg {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    width: 200%;
+    height: 200vh;
+    background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+    background-repeat: repeat;
+    animation: bg-animation .2s infinite;
+    opacity: .9;
+    visibility: visible;
+}
+  
+@keyframes bg-animation {
+    0% { transform: translate(0,0) }
+    10% { transform: translate(-5%,-5%) }
+    20% { transform: translate(-10%,5%) }
+    30% { transform: translate(5%,-10%) }
+    40% { transform: translate(-5%,15%) }
+    50% { transform: translate(-10%,5%) }
+    60% { transform: translate(15%,0) }
+    70% { transform: translate(0,10%) }
+    80% { transform: translate(-15%,0) }
+    90% { transform: translate(10%,5%) }
+    100% { transform: translate(5%,0) }
+}
