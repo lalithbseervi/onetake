@@ -7,16 +7,32 @@
     --min-container-height: 15vh;
     --steel-gray: #71797E;
     --bright-green: #04AA6D;
+    /* 1abc9c */
 }
 
 html, body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
     margin: 0;
     height: auto;
+    background-color: #E0E1DD;
+    scroll-behavior: smooth;
 }
 
 h1, p {
     margin-left: var(--left-margin);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.banner {
+    padding: 1.125em;
+    box-sizing: border-box;
+    border: 2px round;
+    background-color: #0D1B2A;
+    margin-bottom: 2em;
+    color: white;
 }
 
 label, button, input, .result {
@@ -41,7 +57,7 @@ label, button, input, .result {
 }
 
 .parent > div {
-    background-color: var(--steel-gray);
+    background-color: #778DA9;
     padding: 10px;
     border-radius: 5px;
     display: grid;
@@ -100,8 +116,29 @@ input:focus {
 }
 
 .result {
-    margin-left: 4.5%;
+    /* margin-left: 4.5%; */
     margin-top: 3%;
+    padding: 1em;
+    background-color: #1B263B;
+    color: white;
+}
+
+.large {
+    font-size: 1.5em;
+}
+
+#determinant, #adjoint, #inverse, #constant, #resultant {
+    text-indent: 1.5em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:visited {
+    text-decoration: none;
+    color: inherit;
 }
 
 @media screen and (min-width: 992px) {
@@ -132,7 +169,7 @@ input:focus {
     }
 
     .parent > div {
-        background-color: var(--steel-gray);
+        background-color: #778DA9;
         padding: 10px;
         border-radius: 5px;
         display: grid;
