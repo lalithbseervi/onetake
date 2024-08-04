@@ -66,13 +66,16 @@
 		if (s<=9) {s = '0'+s};
 
 		var color = '#'+h+m+s;
+		
+		console.log(color);
+		
 		var t = h+':'+m+':'+s;
 		$("div.background").css("background-color", color );
 		$("p#hex").text(t);
 
 		setTimeout(refreshData, x*1000);
 	}
-
+	
 	refreshData();
 	</script>
 </html>
