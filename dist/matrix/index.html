@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Matrix Operations</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Enter Matrix A's and B's Values</h1>
+    <div class="banner">
+        <h1 class="text-center">Solve a system of linear equations</h1>
+    </div>
 
     <div class="grid-container parent">
         <div class="grid-item">
@@ -47,18 +49,23 @@
         </div>
     </div> <br>
 
-    <button class="button button-default" onclick="processInput()">Calculate</button>
+    <a href="#target"><button class="button button-default" onclick="processInput()">Calculate</button></a>
 
-    <div class="result">
-        Result:
+    <div class="result" id="target">
+        <div class="target"></div>
+        <p class="large">Result:</p>
         <div id="determinant"></div>
         <div id="adjoint"></div>
-        <div id="consistency"></div>
         <div id="inverse"></div>
         <div id="constant"></div>
         <div id="resultant"></div>
     </div>
-
+    <script>
+        document.addEventListener('onclick', () => {
+            let target = document.querySelector('.result');
+            target.scroll();
+        });
+    </script>
     <script src="index.js"></script>
 </body>
 </html>
