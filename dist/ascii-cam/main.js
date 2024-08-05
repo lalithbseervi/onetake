@@ -99,11 +99,13 @@ const processFrame = () => {
     window.requestAnimationFrame(processFrame);
 };
 
-play.addEventListener("click", function() {
-    video.play();
-    play.classList.add("is-hidden");
-    pause.classList.remove("is-hidden");
-})
+function play() {
+    play.addEventListener("click", function() {
+         video.play();
+         play.classList.add("is-hidden");
+         pause.classList.remove("is-hidden");
+    })
+}
 
 pause.addEventListener("click", function () {
     video.pause();
@@ -138,6 +140,7 @@ async function initializeCamera() {
     } catch(err) {
         alert("Could not access webcam.");
     }
+    play();
 }
 
 changeCam.addEventListener("click", function() {
@@ -151,4 +154,4 @@ video.addEventListener('play', function () {
 });
 
 initializeCamera();
-window.requestAnimationFrame(processFrame);
+video.play();
