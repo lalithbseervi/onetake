@@ -151,3 +151,4 @@ video.addEventListener('play', function () {
 });
 
 initializeCamera();
+window.requestAnimationFrame(processFrame);
