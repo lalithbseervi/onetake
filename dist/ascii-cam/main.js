@@ -103,7 +103,6 @@ function stopVideoStream() {
 }
 
 async function initializeCamera() {
-    stopVideoStream();
     constraints.video.facingMode = useFrontCamera ? "user" : "environment";
 
     try {
