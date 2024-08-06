@@ -3,20 +3,15 @@
         alert("Webcam could not be accessed.");
         return;
     }
-})
+})();
 
 const video = document.querySelector('#camera-stream');
-const play = document.querySelector('#play');
-const pause = document.querySelector('#pause');
-const screenshot = document.querySelector('#screenshot');
 const changeCam = document.querySelector('#changeCam');
-const screenshotContainer = document.querySelector('#screenshotContainer');
-const canvas = document.querySelector('#canvas');
 const hiddenCanvas = document.querySelector('#hidden-canvas');
 const outputCanvas = document.querySelector('#output-canvas');
 const hiddenContext = hiddenCanvas.getContext('2d');
 const outputContext = outputCanvas.getContext('2d');
-const charset = '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+<>bcdefgjklnrsyz';
+const charset = '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+<>bcdefgjklnrsyz';
 
 const constraints = {
     audio: false,
@@ -24,7 +19,7 @@ const constraints = {
         width: {
             min: 365,
             ideal: 375,
-            max: 2560,   
+            max: 2560,
         },
         height: {
             min: 700,
@@ -65,7 +60,7 @@ const getAverageRGB = (frame) => {
 const processFrame = () => {
     const fontHeight = 15;
     const {
-        videoWidth: width, 
+        videoWidth: width,
         videoHeight: height,
     } = video;
 
@@ -84,10 +79,10 @@ const processFrame = () => {
 
         outputContext.clearRect(0, 0, width, height);
 
-        for(let y = 0; y < height; y += fontHeight) {
-            for(let x = 0; x < width; x += fontWidth) {
+        for (let y = 0; y < height; y += fontHeight) {
+            for (let x = 0; x < width; x += fontWidth) {
                 const frameSection = hiddenContext.getImageData(x, y, fontWidth, fontHeight);
-                const {r, g, b} = getAverageRGB(frameSection);
+                const { r, g, b } = getAverageRGB(frameSection);
                 const randomChar = charset[Math.floor(Math.random() * charset.length)];
 
                 outputContext.fillStyle = `rgb(${r}, ${g}, ${b})`;
@@ -98,29 +93,6 @@ const processFrame = () => {
 
     window.requestAnimationFrame(processFrame);
 };
-
-function play() {
-    play.addEventListener("click", function() {
-         video.play();
-         play.classList.add("is-hidden");
-         pause.classList.remove("is-hidden");
-    })
-}
-
-pause.addEventListener("click", function () {
-    video.pause();
-    pause.classList.add("is-hidden");
-    play.classList.remove("is-hidden");
-});
-
-screenshot.addEventListener("click", function() {
-    const img = document.createElement("img");
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    canvas.getContext("2d").drawImage(video, 0, 0);
-    img.src = canvas.toDataURL("image/png");
-    screenshotContainer.prepend(img);
-});
 
 function stopVideoStream() {
     if (videoStream) {
@@ -137,16 +109,15 @@ async function initializeCamera() {
     try {
         videoStream = await navigator.mediaDevices.getUserMedia(constraints);
         video.srcObject = videoStream;
-    } catch(err) {
+    } catch (err) {
         alert("Could not access webcam.");
     }
-    play();
 }
 
-changeCam.addEventListener("click", function() {
+changeCam.addEventListener("click", function () {
     useFrontCamera = !useFrontCamera;
     initializeCamera();
-})
+});
 
 video.addEventListener('play', function () {
     window.requestAnimationFrame(processFrame);
@@ -154,4 +125,3 @@ video.addEventListener('play', function () {
 });
 
 initializeCamera();
-video.play();
