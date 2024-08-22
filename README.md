@@ -1,1 +1,1 @@
-# onetake
+# onetake.pages.dev
