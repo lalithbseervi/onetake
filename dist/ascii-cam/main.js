@@ -1,71 +1,49 @@
 (function () {
-    if (!"mediaDevices" in navigator || !"getUserMedia" in navigator.mediaDevices) {
+    if (!("mediaDevices" in navigator) || !("getUserMedia" in navigator.mediaDevices)) {
         alert("Webcam could not be accessed.");
         return;
     }
-})
+})();
 
 const video = document.querySelector('#camera-stream');
 const play = document.querySelector('#play');
 const pause = document.querySelector('#pause');
-const screenshot = document.querySelector('#screenshot');
 const changeCam = document.querySelector('#changeCam');
-const screenshotContainer = document.querySelector('#screenshotContainer');
-const canvas = document.querySelector('#canvas');
 const hiddenCanvas = document.querySelector('#hidden-canvas');
 const outputCanvas = document.querySelector('#output-canvas');
-const hiddenContext = hiddenCanvas.getContext('2d');
-const outputContext = outputCanvas.getContext('2d');
+const hiddenContext = hiddenCanvas.getContext('2d', {willReadFrequently: true});
+const outputContext = outputCanvas.getContext('2d', {willReadFrequently: true});
 const charset = '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+<>bcdefgjklnrsyz';
+
 const constraints = {
     audio: false,
     video: {
-        width: {
-            min: 375,
-            min: 365,
-            ideal: 375,
-            max: 2560,   
-        },
-        height: {
-            min: 700,
-            ideal: 864,
-            max: 1440,
-        },
-        frameRate: {
-            min: 10,
-            ideal: 20,
-            max: 30,
-        },
+        width: {min: window.innerWidth},
+        height: {min: window.innerHeight},
+        frameRate: { min: 30, ideal: 40, max: 50 },
     },
 };
 
 let useFrontCamera = true;
 let videoStream;
 
+// Function to calculate average RGB of a section
 const getAverageRGB = (frame) => {
     const length = frame.data.length / 4;
-    let r = 0;
-    let g = 0;
-    let b = 0;
+    let r = 0, g = 0, b = 0;
     for (let i = 0; i < length; i++) {
         r += frame.data[i * 4 + 0];
         g += frame.data[i * 4 + 1];
         b += frame.data[i * 4 + 2];
     }
-    return {
-        r: r / length,
-        g: g / length,
-        b: b / length,
-    };
+    return { r: r / length, g: g / length, b: b / length };
 };
 
+// Function to handle frame processing
 const processFrame = () => {
-    const fontHeight = 16;
-    
-    const {
-        videoWidth: width, 
-        videoHeight: height,
-    } = video;
+    const fontHeight = 27;
+
+    const { videoWidth: width, videoHeight: height } = video;
     if (width && height) {
         hiddenCanvas.width = width;
         hiddenCanvas.height = height;
@@ -76,11 +54,13 @@ const processFrame = () => {
         outputContext.font = `${fontHeight}px Consolas`;
         const text = outputContext.measureText('@');
         const fontWidth = parseInt(text.width);
-        outputContext.clearRect(0, 0, width, height);
-        for(let y = 0; y < height; y += fontHeight) {
-            for(let x = 0; x < width; x += fontWidth) {
-                const frameSection = hiddenContext.getImageData(x, y, fontWidth, fontHeight);
-                const {r, g, b} = getAverageRGB(frameSection);
+        outputContext.clearRect(0, 0, width, height); // Clear previous frame
+        
+        // Loop through the canvas and convert pixels to ASCII
+        for (let y = 0; y < height; y += fontHeight) {
+            for (let x = 0; x < width; x += fontWidth) {
+                const frameSection = hiddenContext.getImageData(x, y, fontWidth, fontHeight, { willReadFrequently: true });
+                const { r, g, b } = getAverageRGB(frameSection);
                 const randomChar = charset[Math.floor(Math.random() * charset.length)];
                 outputContext.fillStyle = `rgb(${r}, ${g}, ${b})`;
                 outputContext.fillText(randomChar, x, y);
@@ -90,7 +70,8 @@ const processFrame = () => {
     window.requestAnimationFrame(processFrame);
 };
 
-play.addEventListener("click", function() {
+// Start and pause video stream
+play.addEventListener("click", function () {
     video.play();
     play.classList.add("is-hidden");
     pause.classList.remove("is-hidden");
@@ -102,16 +83,8 @@ pause.addEventListener("click", function () {
     play.classList.remove("is-hidden");
 });
 
-screenshot.addEventListener("click", function() {
-    const img = document.createElement("img");
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    canvas.getContext("2d").drawImage(video, 0, 0);
-    img.src = canvas.toDataURL("image/png");
-    screenshotContainer.prepend(img);
-});
-
-function stopVideoStream() {
+// Initialize video stream
+function stopVideoStream(videoStream) {
     if (videoStream) {
         videoStream.getTracks().forEach((track) => {
             track.stop();
@@ -125,16 +98,30 @@ async function initializeCamera() {
     try {
         videoStream = await navigator.mediaDevices.getUserMedia(constraints);
         video.srcObject = videoStream;
-    } catch(err) {
+        // Dynamically scale canvas and video to window size
+        video.addEventListener('loadedmetadata', () => {
+            hiddenCanvas.width = video.videoWidth;
+            hiddenCanvas.height = video.videoHeight;
+            outputCanvas.width = video.videoWidth;
+            outputCanvas.height = video.videoHeight;
+        });
+    } catch (err) {
         alert("Could not access webcam.");
     }
 }
-changeCam.addEventListener("click", function() {
+
+// Switch between front and rear cameras
+changeCam.addEventListener("click", function () {
     useFrontCamera = !useFrontCamera;
     initializeCamera();
-})
+});
+
+// Start frame processing when video starts playing
 video.addEventListener('play', function () {
-    window.requestAnimationFrame(processFrame);
+    window.requestAnimationFrame(processFrame); // Start ASCII processing
     console.log('Live!');
 });
+
+// Call initializeCamera immediately to start the stream
 initializeCamera();
+window.requestAnimationFrame(processFrame);
