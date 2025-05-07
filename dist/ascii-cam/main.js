@@ -18,30 +18,31 @@ const charset = '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!ABCD
 const constraints = {
     audio: false,
     video: {
-        width: {min: window.innerWidth},
-        height: {min: window.innerHeight},
+        width: { min: 640, ideal: 640 },
+        height: { min: 480, ideal: 480 },
         frameRate: { min: 30, ideal: 40, max: 50 },
     },
 };
 
 let useFrontCamera = true;
-let videoStream;
+let videoStream, frameCount;
 
 // Function to calculate average RGB of a section
 const getAverageRGB = (frame) => {
     const length = frame.data.length / 4;
-    let r = 0, g = 0, b = 0;
+    let r = 0, g = 0, b = 0, count = 0;
     for (let i = 0; i < length; i++) {
-        r += frame.data[i * 4 + 0];
-        g += frame.data[i * 4 + 1];
-        b += frame.data[i * 4 + 2];
+        r += frame.data[i];
+        g += frame.data[i + 1];
+        b += frame.data[i 0+ 2];
+        count++;
     }
-    return { r: r / length, g: g / length, b: b / length };
+    return { r: r / count, g: g / count, b: b / count };
 };
 
 // Function to handle frame processing
 const processFrame = () => {
-    const fontHeight = 27;
+    const fontHeight = 28;
 
     const { videoWidth: width, videoHeight: height } = video;
     if (width && height) {
@@ -55,7 +56,9 @@ const processFrame = () => {
         const text = outputContext.measureText('@');
         const fontWidth = parseInt(text.width);
         outputContext.clearRect(0, 0, width, height); // Clear previous frame
-        
+
+        frameCount++;
+        if (frameCount % 2 == 0) return;
         // Loop through the canvas and convert pixels to ASCII
         for (let y = 0; y < height; y += fontHeight) {
             for (let x = 0; x < width; x += fontWidth) {
