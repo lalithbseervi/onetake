@@ -42,7 +42,7 @@ const getAverageRGB = (frame) => {
 
 // Function to handle frame processing
 const processFrame = () => {
-    const fontSize = Math.max(16, window.innerHeight / 30);
+    const fontSize = 16;
 
     const { videoWidth: width, videoHeight: height } = video;
     if (width && height) {
