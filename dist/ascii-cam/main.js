@@ -34,7 +34,7 @@ const getAverageRGB = (frame) => {
     for (let i = 0; i < length; i++) {
         r += frame.data[i];
         g += frame.data[i + 1];
-        b += frame.data[i 0+ 2];
+        b += frame.data[i + 2];
         count++;
     }
     return { r: r / count, g: g / count, b: b / count };
