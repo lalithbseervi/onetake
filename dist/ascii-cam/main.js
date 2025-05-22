@@ -5,6 +5,7 @@
     }
 })();
 
+const asciiWorker = new Worker('asciiWorker.js');
 const video = document.querySelector('#camera-stream');
 const play = document.querySelector('#play');
 const pause = document.querySelector('#pause');
@@ -56,19 +57,26 @@ const processFrame = () => {
         const text = outputContext.measureText('@');
         const fontWidth = parseInt(text.width);
         outputContext.clearRect(0, 0, width, height); // Clear previous frame
+        const imageData = hiddenContext.getImageData(0, 0, width, height);
 
-        frameCount++;
-        if (frameCount % 2 == 0) return;
-        // Loop through the canvas and convert pixels to ASCII
-        for (let y = 0; y < height; y += fontHeight) {
-            for (let x = 0; x < width; x += fontWidth) {
-                const frameSection = hiddenContext.getImageData(x, y, fontWidth, fontHeight, { willReadFrequently: true });
-                const { r, g, b } = getAverageRGB(frameSection);
-                const randomChar = charset[Math.floor(Math.random() * charset.length)];
-                outputContext.fillStyle = `rgb(${r}, ${g}, ${b})`;
-                outputContext.fillText(randomChar, x, y);
-            }
-        }
+        // Send to worker
+        asciiWorker.postMessage({
+            imageData,
+            width,
+            height,
+            fontWidth: Math.floor(fontWidth),
+            fontHeight,
+            charset
+        });
+
+        asciiWorker.onmessage = function (e) {
+            const { output } = e.data;
+
+            output.forEach(({ x, y, char, color }) => {
+                outputContext.fillStyle = color;
+                outputContext.fillText(char, x, y);
+            });
+        };
     }
     window.requestAnimationFrame(processFrame);
 };
