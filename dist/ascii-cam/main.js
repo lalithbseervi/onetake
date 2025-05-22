@@ -55,12 +55,6 @@ const processFrame = () => {
 
         const testData = hiddenContext.getImageData(0, 0, 1, 1).data;
         console.log('Pixel at (0,0):', testData); 
-
-        const debugCanvas = document.createElement('canvas');
-        debugCanvas.width = width;
-        debugCanvas.height = height;
-        document.body.appendChild(debugCanvas);
-        debugCanvas.getContext('2d').drawImage(video, 0, 0, width, height);
         
         outputContext.textBaseline = 'top';
         outputContext.font = `${fontHeight}px Consolas`;
