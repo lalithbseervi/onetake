@@ -5,7 +5,7 @@
     }
 })();
 
-const asciiWorker = new Worker('asciiWorker.js');
+const asciiWorker = new Worker('worker.js');
 const video = document.querySelector('#camera-stream');
 const play = document.querySelector('#play');
 const pause = document.querySelector('#pause');
