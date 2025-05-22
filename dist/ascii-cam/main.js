@@ -73,7 +73,7 @@ const processFrame = () => {
             const { output } = e.data;
 
             output.forEach(({ x, y, char, color }) => {
-                console.log("Worker sent data:", output);
+                setTimeout(() => { console.log("Worker sent data:", output); }, 1000);
                 outputContext.fillStyle = color;
                 outputContext.fillText(char, x, y);
             });
