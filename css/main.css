@@ -25,6 +25,10 @@ h1, h2 {
     opacity: .9;
     visibility: visible;
 }
+
+form > * {
+    z-index: 999;
+}
   
 @keyframes bg-animation {
     0% { transform: translate(0,0) }
