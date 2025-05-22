@@ -46,12 +46,16 @@ const processFrame = () => {
     const fontHeight = 16;
 
     const { videoWidth: width, videoHeight: height } = video;
-    if (width && height) {
+    if (video.readyState >= 2 && width && height) {
         hiddenCanvas.width = width;
         hiddenCanvas.height = height;
         outputCanvas.width = width;
         outputCanvas.height = height;
         hiddenContext.drawImage(video, 0, 0, width, height);
+
+        const testData = hiddenContext.getImageData(0, 0, 1, 1).data;
+        console.log('Pixel at (0,0):', testData); 
+        
         outputContext.textBaseline = 'top';
         outputContext.font = `${fontHeight}px Consolas`;
         const text = outputContext.measureText('@');
@@ -129,9 +133,14 @@ changeCam.addEventListener("click", function () {
 });
 
 // Start frame processing when video starts playing
-video.addEventListener('play', function () {
-    window.requestAnimationFrame(processFrame); // Start ASCII processing
-    console.log('Live!');
+// video.addEventListener('play', function () {
+//     window.requestAnimationFrame(processFrame); // Start ASCII processing
+//     console.log('Live!');
+// });
+
+video.addEventListener('canplay', function () {
+    console.log('Video is ready to render!');
+    window.requestAnimationFrame(processFrame);
 });
 
 // Call initializeCamera immediately to start the stream
