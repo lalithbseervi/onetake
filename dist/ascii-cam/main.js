@@ -1,5 +1,4 @@
-// main.js
-
+/* check whether webcam access is available */
 (function () {
     if (!"mediaDevices" in navigator || !"getUserMedia" in navigator.mediaDevices) {
         alert("Webcam could not be accessed.");
@@ -35,7 +34,10 @@ const charsets = {
 
 let charset = charsets['default'];
 
-const constraints = {
+let useFrontCamera = true;
+
+// Remove facingMode from constraints here, will set it fresh each time
+const baseConstraints = {
     audio: false,
     video: {
         width: {
@@ -49,37 +51,46 @@ const constraints = {
             max: 1440,
         },
         frameRate: {
-            min: 10,
-            ideal: 20,
+            min: 5,
+            ideal: 10,
             max: 30,
-        },
-    },
+        }
+    }
 };
 
-let useFrontCamera = true;
 let videoStream;
 
-// Create the Web Worker
-const worker = new Worker('worker.js');
+// Initialize the worker (only one worker now)
+let worker = new Worker('worker.js');
 
 // Define a smaller sample size for faster processing
-const sampleWidth = 100;
+const getSampleWidth = () => {
+    const screenWidth = window.innerWidth; // Get the device's screen width
+
+    // Set the sampleWidth based on screen width
+    if (screenWidth < 600) { // Small devices like phones
+        return 50;
+    } else if (screenWidth < 1200) { // Tablets and smaller desktops
+        return 100;
+    } else { // Larger desktops or high-end laptops
+        return 150;
+    }
+};
+
+let sampleWidth = getSampleWidth();
 let sampleHeight;
 
 const renderAsciiArt = (asciiResult) => {
     const { videoWidth, videoHeight } = video;
-
     if (videoWidth && videoHeight && asciiResult) {
+        // Use actual video dimensions for canvas
         outputCanvas.width = videoWidth;
         outputCanvas.height = videoHeight;
-        outputContext.textBaseline = 'top';
-
-        const fontHeight = Math.ceil(videoHeight / sampleHeight);
-        const fontWidth = Math.ceil(videoWidth / sampleWidth);
-        outputContext.font = `${fontHeight}px Consolas`;
+        // Calculate font size based on video dimensions and sample grid
+        const fontHeight = Math.floor(videoHeight / sampleHeight);
+        const fontWidth = Math.floor(videoWidth / sampleWidth);
+        outputContext.font = `${fontHeight}px monospace`;
         outputContext.clearRect(0, 0, videoWidth, videoHeight);
-
-        // Iterate through the result from the worker and draw to the canvas
         for (let y = 0; y < sampleHeight; y++) {
             for (let x = 0; x < sampleWidth; x++) {
                 const item = asciiResult[y][x];
@@ -90,11 +101,14 @@ const renderAsciiArt = (asciiResult) => {
     }
 };
 
+let lastTime = 0;
+const fps = 10; // Limit to 10 frames per second
+const interval = 1000 / fps;
+
 const processFrame = () => {
     const { videoWidth, videoHeight } = video;
 
     if (videoWidth && videoHeight) {
-        // Calculate sample height
         const aspectRatio = videoWidth / videoHeight;
         sampleHeight = Math.floor(sampleWidth / aspectRatio);
 
@@ -103,19 +117,22 @@ const processFrame = () => {
         hiddenCanvas.height = sampleHeight;
         hiddenContext.drawImage(video, 0, 0, sampleWidth, sampleHeight);
 
-        // Get the downscaled image data and send it to the worker
+        // Get the image data
         const imageData = hiddenContext.getImageData(0, 0, sampleWidth, sampleHeight);
+
+        // Process the frame with the worker
         worker.postMessage({ imageData, charset, sampleWidth, sampleHeight });
+
+        // Continue the loop for the next frame
+        window.requestAnimationFrame(processFrame);
     }
-    // Continue the loop for the next frame
-    window.requestAnimationFrame(processFrame);
 };
 
-// Listen for messages (the processed ASCII data) from the worker
-worker.addEventListener('message', (event) => {
+// Listen for messages from the worker
+worker.onmessage = (event) => {
     const asciiResult = event.data;
     renderAsciiArt(asciiResult);
-});
+};
 
 play.addEventListener("click", function () {
     video.play();
@@ -131,10 +148,7 @@ pause.addEventListener("click", function () {
 
 screenshot.addEventListener("click", function () {
     const img = document.createElement("img");
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    canvas.getContext("2d").drawImage(video, 0, 0);
-    img.src = canvas.toDataURL("image/png");
+    img.src = outputCanvas.toDataURL("image/png");
     screenshotContainer.prepend(img);
 });
 
@@ -143,22 +157,36 @@ function stopVideoStream() {
         videoStream.getTracks().forEach((track) => {
             track.stop();
         });
+        videoStream = null;
     }
 }
 
 async function initializeCamera() {
     stopVideoStream();
+    const constraints = JSON.parse(JSON.stringify(baseConstraints));
     constraints.video.facingMode = useFrontCamera ? "user" : "environment";
     try {
-        videoStream = await navigator.mediaDevices.getUserMedia(constraints);
-        video.srcObject = videoStream;
+        const stream = await navigator.mediaDevices.getUserMedia(constraints);
+        video.srcObject = null;
+        video.srcObject = stream;
+        videoStream = stream;
+        // For cross-browser compatibility, always start video and ASCII loop after loadedmetadata
+        video.onloadedmetadata = () => {
+            hiddenCanvas.width = video.videoWidth;
+            hiddenCanvas.height = video.videoHeight;
+            outputCanvas.width = video.videoWidth;
+            outputCanvas.height = video.videoHeight;
+            video.play();
+            window.requestAnimationFrame(processFrame);
+        };
     } catch (err) {
-        alert("Could not access webcam.");
+        alert("Could not access webcam. Please check your permissions.");
     }
 }
 
 changeCam.addEventListener("click", function () {
     useFrontCamera = !useFrontCamera;
+    stopVideoStream();
     initializeCamera();
 });
 
